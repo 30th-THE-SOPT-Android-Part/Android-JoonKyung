@@ -207,6 +207,39 @@ binding.signUpJoinBt.setOnClickListener {
 > 3-1 도전과제: ViewBinding에서 DataBinding으로
 
 - ViewBinding에서 DataBinding으로 바꾸기
+
+- build.gradle (모듈)
+```kotlin
+plugins {
+    ...
+    id 'kotlin-kapt'
+}
+
+android {
+    
+    ...
+
+    dataBinding {
+          enabled true
+}
+```
+
+xml파일들을 <layout> </layout>으로 감싸주었다
+
+- HomeActivity
+```kotlin
+
+class HomeActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityHomeBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
+    }
+}
+```
+
 - ViewBinding과 DataBinding의 개념
 
 > 3-2 도전과제: MVVM으로 과제 구현
