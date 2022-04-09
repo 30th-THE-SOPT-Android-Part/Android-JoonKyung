@@ -118,8 +118,39 @@ binding.signUpJoinBt.setOnClickListener {
 
 > 2-1 성장과제: 화면이동 + @
 
-- 회원가입:SignUpActivity)이 성공한다면 이전 로그인 화면으로 돌아온다
-- 회원가입 화면에서 로그인화면으로 돌아갈떄 회원가입에서 입력했던 아이디와 비밀번호가 입력되어 있어야 함(Hint : registerForActivityResult, putExtra)
+- 회원가입:SignUpActivity)이 성공한다면 이전 로그인 화면으로 돌아온다, 회원가입 화면에서 로그인화면으로 돌아갈떄 회원가입에서 입력했던 아이디와 비밀번호가 입력되어 있어야 함(Hint : registerForActivityResult, putExtra)
+
+- SignInActivity.kt
+```kotlin
+val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            result ->
+            if(result.resultCode == Activity.RESULT_OK){
+                val myData: Intent? = result.data
+                binding.signInIdEt.setText(myData!!.getStringExtra("id"))
+                binding.signInPasswordEt.setText(result.data?.getStringExtra("pwd"))
+            }
+        }
+
+binding.signInJoinBt.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
+            resultLauncher.launch(intent)
+        }
+```
+
+- SingUpActivity.kt
+```kotlin
+binding.signUpJoinBt.setOnClickListener {
+            if (binding.signUpNameEt.text.isNullOrBlank() || binding.signUpIdEt.text.isNullOrBlank() || binding.signUpPasswordEt.text.isNullOrBlank()) {
+                Toast.makeText(this, "입력되지 않은 정보가 있습니다", Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(this, SignInActivity::class.java)
+                intent.putExtra("id", binding.signUpIdEt.text.toString())
+                intent.putExtra("pwd", binding.signUpPasswordEt.text.toString())
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+        }
+```
 
 > 2-2 성장과제: ScrollView
 
