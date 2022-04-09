@@ -15,8 +15,8 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.mainLoginBt.setOnClickListener {
-            if (binding.mainIdEt.text.isNullOrBlank() || binding.mainPasswordEt.text.isNullOrBlank()) {
+        binding.signInLoginBt.setOnClickListener {
+            if (binding.signInIdEt.text.isNullOrBlank() || binding.signInPasswordEt.text.isNullOrBlank()) {
                 Toast.makeText(this, "아이디/비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
@@ -25,7 +25,7 @@ class SignInActivity : AppCompatActivity() {
             }
         }
 
-        binding.mainJoinBt.setOnClickListener {
+        binding.signInJoinBt.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }

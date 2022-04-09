@@ -7,7 +7,7 @@
     tools:context=".SignInActivity">
 
     <TextView
-        android:id="@+id/main_logo_tv"
+        android:id="@+id/sign_in_logo_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/main_id_tv"
+        android:id="@+id/sign_in_id_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -28,19 +28,19 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_logo_tv" />
+        app:layout_constraintTop_toBottomOf="@id/sign_in_logo_tv" />
 
     <EditText
-        android:id="@+id/main_id_et"
+        android:id="@+id/sign_in_id_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
         android:hint="아이디를 입력해주세요."
-        app:layout_constraintTop_toBottomOf="@id/main_id_tv" />
+        app:layout_constraintTop_toBottomOf="@id/sign_in_id_tv" />
 
     <TextView
-        android:id="@+id/main_password_tv"
+        android:id="@+id/sign_in_password_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -49,20 +49,20 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_id_et" />
+        app:layout_constraintTop_toBottomOf="@id/sign_in_id_et" />
 
     <EditText
-        android:id="@+id/main_password_et"
+        android:id="@+id/sign_in_password_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
         android:hint="비밀번호를 입력해주세요."
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/main_password_tv" />
+        app:layout_constraintTop_toBottomOf="@id/sign_in_password_tv" />
 
     <Button
-        android:id="@+id/main_login_bt"
+        android:id="@+id/sign_in_login_bt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -71,10 +71,10 @@
         android:text="LOGIN"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/main_password_et" />
+        app:layout_constraintTop_toBottomOf="@id/sign_in_password_et" />
 
     <Button
-        android:id="@+id/main_join_bt"
+        android:id="@+id/sign_in_join_bt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -83,6 +83,6 @@
         android:text="회원가입"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/main_login_bt" />
+        app:layout_constraintTop_toBottomOf="@id/sign_in_login_bt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
