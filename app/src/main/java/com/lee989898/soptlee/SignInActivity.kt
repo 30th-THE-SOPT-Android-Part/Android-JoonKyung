@@ -1,9 +1,11 @@
 package com.lee989898.soptlee
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import com.lee989898.soptlee.databinding.ActivitySignInBinding
 
 class SignInActivity : AppCompatActivity() {
@@ -14,6 +16,15 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            result ->
+            if(result.resultCode == Activity.RESULT_OK){
+                val myData: Intent? = result.data
+                binding.signInIdEt.setText(myData!!.getStringExtra("id"))
+                binding.signInPasswordEt.setText(result.data?.getStringExtra("pwd"))
+            }
+        }
 
         binding.signInLoginBt.setOnClickListener {
             if (binding.signInIdEt.text.isNullOrBlank() || binding.signInPasswordEt.text.isNullOrBlank()) {
@@ -27,7 +38,7 @@ class SignInActivity : AppCompatActivity() {
 
         binding.signInJoinBt.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
-            startActivity(intent)
+            resultLauncher.launch(intent)
         }
 
     }

@@ -45,6 +45,4 @@
         android:text="MBTI: ISTP"
         android:layout_height="wrap_content"/>
 
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
