@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SOPTLEE">
         <activity
+            android:name=".EmptyActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
