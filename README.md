@@ -71,8 +71,48 @@ binding.signUpJoinBt.setOnClickListener {
 
 > 1-3 필수과제: 자기소개 페이지 만들기(HomeActivity)
 
-- ImageView, TextView 활용
-- 이름, 나이, MBTI 등 자기소개 작성
+- ImageView, TextView 활용, 이름, 나이, MBTI 등 자기소개 작성
+
+```kotlin
+<ImageView
+        android:layout_width="100dp"
+        android:id="@+id/home_profile_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/profile"
+        android:scaleType="fitXY"
+        android:layout_height="100dp"/>
+
+    <TextView
+        android:id="@+id/home_name_tv"
+        app:layout_constraintTop_toBottomOf="@id/home_profile_iv"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@id/home_profile_iv"
+        app:layout_constraintEnd_toEndOf="@id/home_profile_iv"
+        android:text="이름: 이준경"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/home_age_tv"
+        app:layout_constraintTop_toBottomOf="@+id/home_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@id/home_name_tv"
+        android:text="나이: 27"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/home_mbti_tv"
+        app:layout_constraintTop_toBottomOf="@id/home_age_tv"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@id/home_age_tv"
+        android:text="MBTI: ISTP"
+        android:layout_height="wrap_content"/>
+```
 
 ### 02 성장 과제
 
