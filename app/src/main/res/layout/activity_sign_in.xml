@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SignInActivity">
 
     <TextView
         android:id="@+id/main_logo_tv"
@@ -58,6 +58,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
         android:hint="비밀번호를 입력해주세요."
+        android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@id/main_password_tv" />
 
     <Button
@@ -65,12 +66,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:background="#6200EE"
         android:layout_marginTop="40dp"
+        android:background="#6200EE"
         android:text="LOGIN"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/main_password_et" />
 
+    <Button
+        android:id="@+id/main_join_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#8BC34A"
+        android:text="회원가입"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/main_login_bt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

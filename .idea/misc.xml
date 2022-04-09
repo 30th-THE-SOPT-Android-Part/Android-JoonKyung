@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/activity_home.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/activity_main.xml" value="0.1296875" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/activity_sign_in.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/activity_sign_up.xml" value="0.11510416666666666" />
       </map>
     </option>
   </component>
