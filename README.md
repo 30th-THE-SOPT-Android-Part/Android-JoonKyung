@@ -242,4 +242,34 @@ class HomeActivity : AppCompatActivity() {
 
 - ViewBinding과 DataBinding의 개념
 
+View Binding과 Data Binding은 호환이 되기 때문에 같은 모듈에서 동시에 사용가능
+
+ViewBinding: 뷰 결합 기능으로 뷰와 상호작용하는 코드를 쉽게 작성하게 도와주는 라이브러리
+1. Null안전
+2. 유형안전
+3. 빠른 컴파일 속도
+
+DataBinding: UI요소와 데이터를 프로그램적으로 연결하지 않고, 선언적 형식으로 결합할 수 있게 도와주는 라이브러리
+1. Null안전
+2. 메모리 누수 방지
+3. UI 새로고침에 대해 걱정할 필요가 없다
+
+차이점 
+1. 뷰바인딩의 속도가 더 빠르다
+2. 데이터바인딩은 <layout> 태그를 사용하여 만든 레이아웃을 처리하고, TAG를 삽입한다
+3. 데이터바인딩은 양방향 바인딩을 지원한다
+            
 > 3-2 도전과제: MVVM으로 과제 구현
+            
+---
+            
+## __참고자료__
+
+https://philosopher-chan.tistory.com/1307
+https://velog.io/@yxnsx/Android-DataBinding
+            https://salix97.tistory.com/243
+            
+            
+            
+            
+            
