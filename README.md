@@ -226,16 +226,50 @@ android {
 
 xml파일들을 <layout> </layout>으로 감싸주었다
 
-- HomeActivity
+- activity_sgin_up.xml
 ```kotlin
+<TextView
+            android:text="@{signup.notice}"
+            app:layout_constraintTop_toBottomOf="@id/sign_up_join_bt"
+            android:layout_width="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="wrap_content"/>
+```
 
-class HomeActivity : AppCompatActivity() {
+텍스뷰를 하나 더 추가하여 회원가입 실패 원인을 알려주었다
 
-    private lateinit var binding: ActivityHomeBinding
+- SignUpActivity
+```kotlin
+class SignUpActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySignUpBinding
+    var notice = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
+        binding.signup = this
+
+        binding.signUpJoinBt.setOnClickListener {
+            if (binding.signUpNameEt.text.isNullOrBlank()) {
+//                Toast.makeText(this, "입력되지 않은 정보가 있습니다", Toast.LENGTH_SHORT).show()
+                notice = "이름 비었음"
+                binding.invalidateAll()
+            } else if (binding.signUpIdEt.text.isNullOrBlank()) {
+                notice = "아이디 비었음"
+                binding.invalidateAll()
+            } else if( binding.signUpPasswordEt.text.isNullOrBlank()){
+                notice = "패스워드 비었음"
+                binding.invalidateAll()
+            } else {
+                val intent = Intent(this, SignInActivity::class.java)
+                intent.putExtra("id", binding.signUpIdEt.text.toString())
+                intent.putExtra("pwd", binding.signUpPasswordEt.text.toString())
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+        }
+
     }
 }
 ```
@@ -256,10 +290,14 @@ DataBinding: UI요소와 데이터를 프로그램적으로 연결하지 않고,
 
 차이점 
 1. 뷰바인딩의 속도가 더 빠르다
-2. 데이터바인딩은 <layout> 태그를 사용하여 만든 레이아웃을 처리하고, TAG를 삽입한다
+2. 데이터바인딩은 <layout> 태그를 사용하여 만든 레이아웃을 처리한다
 3. 데이터바인딩은 양방향 바인딩을 지원한다
             
+데이터 바인딩만 했더니 화면 회전을 하면 데이터가 사라져서 LiveData랑 ViewModel을 적용해 고쳐봐야겠다!
+            
 > 3-2 도전과제: MVVM으로 과제 구현
+            
+ 
             
 ---
             
