@@ -226,20 +226,7 @@ android {
 
 xml파일들을 <layout> </layout>으로 감싸주었다
 
-- HomeActivity
-```kotlin
-
-class HomeActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityHomeBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
-    }
-}
-```
-
+- activity_sgin_up.xml
 ```kotlin
 <TextView
             android:text="@{signup.notice}"
@@ -251,6 +238,7 @@ class HomeActivity : AppCompatActivity() {
 
 텍스뷰를 하나 더 추가하여 회원가입 실패 원인을 알려주었다
 
+- SignUpActivity
 ```kotlin
 class SignUpActivity : AppCompatActivity() {
 
@@ -305,9 +293,11 @@ DataBinding: UI요소와 데이터를 프로그램적으로 연결하지 않고,
 2. 데이터바인딩은 <layout> 태그를 사용하여 만든 레이아웃을 처리한다
 3. 데이터바인딩은 양방향 바인딩을 지원한다
             
-데이터 바인딩만 했더니 화면 회전을 하면 데이터가 사라져서 LiveData랑 ViewModel을 적용해 고쳐봐야겠다!!!
+데이터 바인딩만 했더니 화면 회전을 하면 데이터가 사라져서 LiveData랑 ViewModel을 적용해 고쳐봐야겠다!
             
 > 3-2 도전과제: MVVM으로 과제 구현
+            
+ 
             
 ---
             
