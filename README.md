@@ -293,7 +293,77 @@ DataBinding: UI요소와 데이터를 프로그램적으로 연결하지 않고,
 2. 데이터바인딩은 <layout> 태그를 사용하여 만든 레이아웃을 처리한다
 3. 데이터바인딩은 양방향 바인딩을 지원한다
             
-데이터 바인딩만 했더니 화면 회전을 하면 데이터가 사라져서 LiveData랑 ViewModel을 적용해 고쳐봐야겠다!
+데이터 바인딩만 했더니 화면 회전을 하면 데이터가 사라져서 LiveData랑 ViewModel도 같이 적용해 고쳐봐야겠다!
+   
+- SignUpViewModel
+```
+enum class NoticeType{
+    NAME, ID, PWD
+}
+
+class SignUpViewModel : ViewModel() {
+
+    private val _notice = MutableLiveData<String>()
+
+    val notice: LiveData<String>
+        get() = _notice
+
+    init {
+        _notice.value = ""
+    }
+
+    fun updateNotice(noticeType: NoticeType){
+        when(noticeType){
+            NoticeType.NAME ->
+                _notice.value = "이름이 없음"
+            NoticeType.ID ->
+                _notice.value = "아이디가 없음"
+            NoticeType.PWD ->
+                _notice.value = "비밀번호가 없음"
+        }
+    }
+
+}
+```
+
+- SignUpActivity
+---kotlin
+class SignUpActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySignUpBinding
+    lateinit var signUpViewModel: SignUpViewModel
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
+
+        signUpViewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
+
+        signUpViewModel.notice.observe(this, Observer {
+            binding.signUpNoticeTv.text = it.toString()
+        })
+
+        binding.signUpJoinBt.setOnClickListener {
+            if (binding.signUpNameEt.text.isNullOrBlank()) {
+                signUpViewModel.updateNotice(NoticeType.NAME)
+            } else if (binding.signUpIdEt.text.isNullOrBlank()) {
+                signUpViewModel.updateNotice(NoticeType.ID)
+            } else if (binding.signUpPasswordEt.text.isNullOrBlank()) {
+                signUpViewModel.updateNotice(NoticeType.PWD)
+            } else {
+                val intent = Intent(baseContext, SignInActivity::class.java)
+                intent.putExtra("id", binding.signUpIdEt.text.toString())
+                intent.putExtra("pwd", binding.signUpPasswordEt.text.toString())
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+        }
+
+    }
+}
+---
+
             
 > 3-2 도전과제: MVVM으로 과제 구현
             
