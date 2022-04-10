@@ -1,5 +1,7 @@
 ## WEEK 1 ANDROID SEMINAR 1차 과제
 
+https://user-images.githubusercontent.com/90037701/162607757-51454dd3-5739-426b-91d4-c9ae8f373846.mp4
+
 ### 01 필수 과제
 
 > 1-1 필수과제: 로그인 페이지 만들기(SignInActivity)
