@@ -327,7 +327,7 @@ class SignUpViewModel : ViewModel() {
 ```
 
 - SignUpActivity
----kotlin
+```kotlin
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
@@ -362,7 +362,7 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 }
----
+```
 
             
 > 3-2 도전과제: MVVM으로 과제 구현
