@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SOPTLEE">
         <activity
-            android:name=".SignUpActivity"
+            android:name=".signup.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".main.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".signin.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
