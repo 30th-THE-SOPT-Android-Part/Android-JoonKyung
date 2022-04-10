@@ -105,7 +105,7 @@
             app:layout_constraintTop_toBottomOf="@id/sign_up_password_et" />
 
         <TextView
-            android:text="@{signup.notice}"
+            android:id="@+id/sign_up_notice_tv"
             app:layout_constraintTop_toBottomOf="@id/sign_up_join_bt"
             android:layout_width="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
