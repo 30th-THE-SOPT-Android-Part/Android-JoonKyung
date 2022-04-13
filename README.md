@@ -310,6 +310,7 @@ class SignUpActivity : AppCompatActivity() {
             
 데이터바인딩, 라이브데이터, 뷰모델을 처음 배워서 살짝 써봤는데 편하고 좋다. 깊게 들어가서 잘 쓸 수 있게 해야겠다
 registerForActivityResult도 이번 과제 하면서 처음 써봤는데 앱 사용자 입장에서 매우 편리하게 사용할 수 있어서 좋다 나중에도 써먹어야 겠다
+            
 ---
             
 ## __참고자료__
