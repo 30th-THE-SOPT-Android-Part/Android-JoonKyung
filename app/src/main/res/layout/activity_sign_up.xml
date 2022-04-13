@@ -5,9 +5,7 @@
 
     <data>
 
-        <variable
-            name="signup"
-            type="com.lee989898.soptlee.signup.SignUpActivity" />
+  
 
     </data>
 

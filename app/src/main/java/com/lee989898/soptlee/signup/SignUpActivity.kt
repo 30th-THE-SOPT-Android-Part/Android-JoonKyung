@@ -25,25 +25,30 @@ class SignUpActivity : AppCompatActivity() {
 
         signUpViewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
 
+        signUpCheck()
+    }
+
+    private fun signUpCheck() {
         signUpViewModel.notice.observe(this, Observer {
             binding.signUpNoticeTv.text = it.toString()
         })
 
         binding.signUpJoinBt.setOnClickListener {
-            if (binding.signUpNameEt.text.isNullOrBlank()) {
-                signUpViewModel.updateNotice(NoticeType.NAME)
-            } else if (binding.signUpIdEt.text.isNullOrBlank()) {
-                signUpViewModel.updateNotice(NoticeType.ID)
-            } else if (binding.signUpPasswordEt.text.isNullOrBlank()) {
-                signUpViewModel.updateNotice(NoticeType.PWD)
-            } else {
-                val intent = Intent(baseContext, SignInActivity::class.java)
-                intent.putExtra("id", binding.signUpIdEt.text.toString())
-                intent.putExtra("pwd", binding.signUpPasswordEt.text.toString())
-                setResult(Activity.RESULT_OK, intent)
-                finish()
+
+            when {
+                binding.signUpNameEt.text.isNullOrBlank() -> signUpViewModel.updateNotice(NoticeType.NAME)
+                binding.signUpIdEt.text.isNullOrBlank() -> signUpViewModel.updateNotice(NoticeType.ID)
+                binding.signUpPasswordEt.text.isNullOrBlank() -> signUpViewModel.updateNotice(
+                    NoticeType.PWD
+                )
+                else -> {
+                    val intent = Intent(baseContext, SignInActivity::class.java)
+                    intent.putExtra("id", binding.signUpIdEt.text.toString())
+                    intent.putExtra("pwd", binding.signUpPasswordEt.text.toString())
+                    setResult(RESULT_OK, intent)
+                    finish()
+                }
             }
         }
-
     }
 }

@@ -16,15 +16,14 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySignInBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = ActivitySignInBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
         val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result ->
             if(result.resultCode == Activity.RESULT_OK){
-                val myData: Intent? = result.data
-                binding.signInIdEt.setText(myData!!.getStringExtra("id"))
-                binding.signInPasswordEt.setText(result.data?.getStringExtra("pwd"))
+                val myData = result.data ?: return@registerForActivityResult
+                binding.signInIdEt.setText(myData.getStringExtra("id"))
+                binding.signInPasswordEt.setText(myData.getStringExtra("pwd"))
             }
         }
 
