@@ -2,11 +2,38 @@ package com.lee989898.soptlee.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.lee989898.soptlee.R
+import com.lee989898.soptlee.*
+import com.lee989898.soptlee.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityHomeBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        initTransactionEvent()
+    }
+
+    private fun initTransactionEvent() {
+        val followerFragment = FollowerFragment()
+        val repositoryFragment = RepositoryFragment()
+
+        supportFragmentManager.beginTransaction().add(R.id.home_list_fcv, followerFragment).commit()
+
+        binding.homeRepoListBt.setOnClickListener {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.home_list_fcv, repositoryFragment)
+            transaction.commit()
+        }
+
+        binding.homeFollowerListBt.setOnClickListener {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.home_list_fcv, followerFragment)
+            transaction.commit()
+        }
+
     }
 }

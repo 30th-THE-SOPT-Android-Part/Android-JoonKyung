@@ -25,15 +25,13 @@ class SignUpActivity : AppCompatActivity() {
 
         signUpViewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
 
-        signUpViewModel.notice.observe(this, Observer {
-            binding.signUpNoticeTv.text = it.toString()
-        })
-
         signUpCheck()
     }
 
     private fun signUpCheck() {
-
+        signUpViewModel.notice.observe(this, Observer {
+            binding.signUpNoticeTv.text = it.toString()
+        })
 
         binding.signUpJoinBt.setOnClickListener {
 
