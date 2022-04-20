@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## WEEK 1 ANDROID SEMINAR 1차 과제
 
 
@@ -319,6 +320,7 @@ https://velog.io/@yxnsx/Android-DataBinding
             https://salix97.tistory.com/243
             
             
-            
-            
-            
+                        
+=======
+# Android-JoonKyung
+>>>>>>> main
