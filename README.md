@@ -1,5 +1,7 @@
 ## WEEK 2 ANDROID SEMINAR 2차 과제
 
+https://user-images.githubusercontent.com/90037701/164734558-6e167ae7-f9e8-4eaf-b923-8597d94d3c4c.mp4
+
 ### 01 필수 과제
 
 > 1-1 필수과제: 자기소개 페이지를 만든 HomeActivity 하단에 FollowerRecyclerView, RepositoryRecyclerView 만들기 (HomeActivity.kt)
@@ -416,14 +418,13 @@ val dividerItemDecoration =
         binding.followerListRv.addItemDecoration(dividerItemDecoration)
 ```
 
-- 아이템 간격
+- 아이템들을 유연하게 꾸미기, 아이템 간 간격(margin) 주기
 ```kotlin
 val layoutParams = holder.itemView.layoutParams
         layoutParams.height = 500
         holder.itemView.requestLayout()
 ```
 
-- 아이템들을 유연하게 꾸미기, ItemDecoration을 활용해서 구분선 or 아이템 간 간격(margin) 주기
 
 > 2-3 성장과제: RecyclerView Item 이동 삭제 구현
 
@@ -433,15 +434,33 @@ val layoutParams = holder.itemView.layoutParams
 
 ### 03 도전 과제
 
-> 3-1 도전과제:
+> 3-1 도전과제
+
+- Fragment 보일러 플레이트 코드 개선
+
+BaseFragment로 Fragment를 상속 받는 추상클래스를 만들어 사용하고자 하는 프래그먼트에서 상속받아 사용하여 보일러 플레이트 코드를 개선할 수 있다
+어노테이션 프로세서 사용한다. 어노테이션을 프로세서를 이용하여 보일러 플레이트 코드 생성하는 자동화 작업을 한다면, 보일러플레이트 코드를 제거하는데 가장 큰 도움이 된다
+
+- notifyDataSetChanged의 문제점
+
+notifyDataSetChanged 함수에는 큰 단점이 있다. RecyclerView에서 사소한 변경(예: 상단에 단일 항목이 추가된 경우)을 인식하지 못한다. 캐시된 항목 상태를 모두 삭제하라는 지시를 받게 되므로 모든 항목을 다시 결합해야 한다  
+최소한의 업데이트를 계산하고 전달하는 DiffUtil을 사용하는 것이 더 좋다
+
+> 이번 과제를 통해 배운 내용
+
+리사이클러뷰 삭제와 이동하는법을 배워서 유용하게 쓸 수 있겠다.  
+ItemDecoration을 활용해서 다양하게 디자인 해봐야 겠다.  
+도전 과제는 나중에 적용해봐야겠다
 
 ## __참고자료__
 
 https://philosopher-chan.tistory.com/1307
 https://velog.io/@yxnsx/Android-DataBinding
-            https://salix97.tistory.com/243
+https://salix97.tistory.com/243
+https://developer.android.com/topic/performance/vitals/render?hl=ko
+https://charlezz.medium.com/%EB%B3%B4%EC%9D%BC%EB%9F%AC%ED%94%8C%EB%A0%88%EC%9D%B4%ED%8A%B8-%EC%BD%94%EB%93%9C%EB%9E%80-boilerplate-code-83009a8d3297
             
             
-            
+        
             
             
