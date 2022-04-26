@@ -8,11 +8,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/repository_list_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
         tools:itemCount="4"
-        tools:listitem="@layout/item_repository_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        tools:listitem="@layout/item_repository_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

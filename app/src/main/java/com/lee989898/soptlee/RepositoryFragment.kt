@@ -36,10 +36,7 @@ class RepositoryFragment : Fragment() {
 
         repositoryAdapter.repositoryList.addAll(
             listOf(
-                RepositoryData(
-                    "안드로이드 과제 레포지토리", "안드로이드 파트 과제안드로이드 파트 과제안드로이드 파트 과제안드로이드 파트 과제" +
-                            "안드로이드 파트 과제안드로이드 파트 과제안드로이드 파트 과제안드로이드 파트 과제안드로이드 파트 과제안드로이드 파트 과제"
-                ),
+                RepositoryData("안드로이드 과제 레포지토리", "안드로이드 파트 과제".repeat(5)),
                 RepositoryData("ios 과제 레포지토리", "ios 파트 과제"),
                 RepositoryData("서버 과제 레포지토리", "서버 파트 과제"),
                 RepositoryData("기획 과제 레포지토리", "기획 파트 과제"),

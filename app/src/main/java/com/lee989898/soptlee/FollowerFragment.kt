@@ -21,6 +21,14 @@ class FollowerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFollowerBinding.inflate(layoutInflater, container, false)
+
+        addFollowerData()
+        initFollowerAdapter()
+
+        return binding.root
+    }
+
+    private fun addFollowerData() {
         list = listOf(
             FollowerData("이강민", "안드로이드 파트장"),
             FollowerData("김태현", "IOS 파트장"),
@@ -29,20 +37,12 @@ class FollowerFragment : Fragment() {
             FollowerData("채정아", "서버 파트장"),
             FollowerData("박수아", "디자인 파트장")
         )
-        initFollowerAdapter()
-
-        return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun initFollowerAdapter() {
         followerAdapter = FollowerAdapter()
 
-        val swipeGesture = object : SwipeGesture(requireContext()){
+        val swipeGesture = object : SwipeGesture(requireContext()) {
 
             override fun onMove(
                 recyclerView: RecyclerView,
@@ -53,20 +53,20 @@ class FollowerFragment : Fragment() {
                 val from_pos = viewHolder.adapterPosition
                 val to_pos = target.adapterPosition
 
-                Collections.swap(list,from_pos, to_pos)
+                Collections.swap(list, from_pos, to_pos)
                 followerAdapter.notifyItemMoved(from_pos, to_pos)
 
                 return false
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                when(direction) {
+                when (direction) {
                     ItemTouchHelper.LEFT -> {
                         followerAdapter.deleteItem(viewHolder.adapterPosition)
                     }
-                    ItemTouchHelper.RIGHT -> {
-                        followerAdapter.deleteItem(viewHolder.adapterPosition)
-                    }
+//                    ItemTouchHelper.RIGHT -> {
+//                        followerAdapter.deleteItem(viewHolder.adapterPosition)
+//                    }
                 }
 
             }
@@ -79,14 +79,20 @@ class FollowerFragment : Fragment() {
         binding.followerListRv.adapter = followerAdapter
 
         val dividerItemDecoration =
-            DividerItemDecoration(binding.followerListRv.context, LinearLayoutManager(requireContext()).orientation)
+            DividerItemDecoration(
+                binding.followerListRv.context,
+                LinearLayoutManager(requireContext()).orientation
+            )
 
         binding.followerListRv.addItemDecoration(dividerItemDecoration)
 
-        followerAdapter.followerList.addAll(
-            list
-        )
+        followerAdapter.followerList.addAll(list)
         followerAdapter.notifyDataSetChanged()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

@@ -23,15 +23,16 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
 
-        signUpViewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
+        signUpViewModel = ViewModelProvider(this)[SignUpViewModel::class.java]
 
         signUpCheck()
     }
 
     private fun signUpCheck() {
-        signUpViewModel.notice.observe(this, Observer {
+
+        signUpViewModel.notice.observe(this) {
             binding.signUpNoticeTv.text = it.toString()
-        })
+        }
 
         binding.signUpJoinBt.setOnClickListener {
 

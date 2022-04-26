@@ -2,6 +2,7 @@ package com.lee989898.soptlee.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import com.lee989898.soptlee.*
 import com.lee989898.soptlee.databinding.ActivityHomeBinding
 
@@ -24,16 +25,18 @@ class HomeActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().add(R.id.home_list_fcv, followerFragment).commit()
 
         binding.homeRepoListBt.setOnClickListener {
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.home_list_fcv, repositoryFragment)
-            transaction.commit()
+            replaceFragment(repositoryFragment)
         }
 
         binding.homeFollowerListBt.setOnClickListener {
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.home_list_fcv, followerFragment)
-            transaction.commit()
+            replaceFragment(followerFragment)
         }
 
+    }
+
+    private fun replaceFragment(replaceFragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.home_list_fcv, replaceFragment)
+        transaction.commit()
     }
 }

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SOPTLEE">
         <activity
-            android:name=".DetailActivity"
+            android:name=".detail.DetailActivity"
             android:exported="false" />
         <activity
             android:name=".SampleActivity"

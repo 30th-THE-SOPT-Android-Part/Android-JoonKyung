@@ -8,13 +8,11 @@
     android:foreground="?android:selectableItemBackground"
     android:paddingVertical="10dp">
 
-
     <ImageView
         android:id="@+id/follower_profile_iv"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:padding="10dp"
         android:src="@drawable/profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
