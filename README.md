@@ -1,324 +1,466 @@
-## WEEK 1 ANDROID SEMINAR 1차 과제
+## WEEK 2 ANDROID SEMINAR 2차 과제
 
-
-https://user-images.githubusercontent.com/90037701/163081323-da59460e-a7a6-439c-8246-4f9862047d85.mp4
-
+https://user-images.githubusercontent.com/90037701/164734558-6e167ae7-f9e8-4eaf-b923-8597d94d3c4c.mp4
 
 ### 01 필수 과제
 
-> 1-1 필수과제: 로그인 페이지 만들기(SignInActivity)
-- 아이디, 비밀번호 모두 입력이 되어있을 떄만 로그인 버튼을 눌렀을떄 HomeActivity로 이동("로그인 성공" 이라는 토스트 메시지 출력), 아이디, 비밀번호 둘중 하나라도 비어있다면 "아이디/비밀번호를 확인해주세요" 라는 토스트 메시지 출력)
+> 1-1 필수과제: 자기소개 페이지를 만든 HomeActivity 하단에 FollowerRecyclerView, RepositoryRecyclerView 만들기 (HomeActivity.kt)
+
+1-1-1: Button, TextView 활용
+
+- activity_home.xml
 ```kotlin
-binding.signInLoginBt.setOnClickListener {
-            if (binding.signInIdEt.text.isNullOrBlank() || binding.signInPasswordEt.text.isNullOrBlank()) {
-                Toast.makeText(this, "아이디/비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
-            }
-        }
+<LinearLayout
+                android:id="@+id/home_button_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/home_mbti_tv">
+
+                <Button
+                    android:id="@+id/home_follower_list_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/follower_round_button"
+                    android:text="팔로워\n 목록"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@id/home_mbti_tv" />
+
+                <Button
+                    android:id="@+id/home_repo_list_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/repository_round_button"
+                    android:text="레포지토리\n 목록"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@id/home_mbti_tv" />
+
+            </LinearLayout>
 ```
-- 비밀번호 EditTextView 입력 내용 가리기(InputType 속성), 모든 EditTextView는 미리보기 글씨가 있어야 함(hint 속성)
-```kotlin
-<EditText
-        android:id="@+id/sign_in_password_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
-        android:hint="비밀번호를 입력해주세요."
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/sign_in_password_tv" />
-```
-- 회원가입 버튼을 클릭시 SignUpActivity로 이동
-```kotlin
-binding.signInJoinBt.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
-            startActivity(intent)
-        }
-```
-> 1-2 필수과제: 회원가입 페이지 만들기(SignUpActivity)
-- 이름, 아이디, 비밀번호 모두 입력이 되어있을 때만 회원가입 버튼을 눌렀을때 다시 SignInActivity로 이동(이때는 intent가 아닌 finish 활용), 이름, 아이디, 비밀번호 중 하나라도 비어있다면 "입력되지 않은 정보가 있습니다" 라는 토스트 메시지 출력
-```kotlin
-binding.signUpJoinBt.setOnClickListener {
-            if (binding.signUpNameEt.text.isNullOrBlank() || binding.signUpIdEt.text.isNullOrBlank() || binding.signUpPasswordEt.text.isNullOrBlank()) {
-                Toast.makeText(this, "입력되지 않은 정보가 있습니다", Toast.LENGTH_SHORT).show()
-            } else {
-                finish()
-            }
-        }
-```
-- 비밀번호 EditTextView 입력 내용 가리기(InputType 속성), 모든 EditTextView는 미리보기 글씨가 있어야 함(hint 속성)
-```kotlin
-<EditText
-        android:id="@+id/sign_up_password_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
-        android:hint="비밀번호를 입력해주세요."
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/sign_up_password_tv" />
-```
-> 1-3 필수과제: 자기소개 페이지 만들기(HomeActivity)
-- ImageView, TextView 활용, 이름, 나이, MBTI 등 자기소개 작성
-```kotlin
-<ImageView
-        android:layout_width="100dp"
-        android:id="@+id/home_profile_iv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/profile"
-        android:scaleType="fitXY"
-        android:layout_height="100dp"/>
-    <TextView
-        android:id="@+id/home_name_tv"
-        app:layout_constraintTop_toBottomOf="@id/home_profile_iv"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@id/home_profile_iv"
-        app:layout_constraintEnd_toEndOf="@id/home_profile_iv"
-        android:text="이름: 이준경"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/home_age_tv"
-        app:layout_constraintTop_toBottomOf="@+id/home_name_tv"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@id/home_name_tv"
-        android:text="나이: 27"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/home_mbti_tv"
-        app:layout_constraintTop_toBottomOf="@id/home_age_tv"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@id/home_age_tv"
-        android:text="MBTI: ISTP"
-        android:layout_height="wrap_content"/>
-```
-### 02 성장 과제
-> 2-1 성장과제: 화면이동 + @
-- 회원가입:SignUpActivity)이 성공한다면 이전 로그인 화면으로 돌아온다, 회원가입 화면에서 로그인화면으로 돌아갈떄 회원가입에서 입력했던 아이디와 비밀번호가 입력되어 있어야 함(Hint : registerForActivityResult, putExtra)
-- SignInActivity.kt
-```kotlin
-val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            result ->
-            if(result.resultCode == Activity.RESULT_OK){
-                val myData: Intent? = result.data
-                binding.signInIdEt.setText(myData!!.getStringExtra("id"))
-                binding.signInPasswordEt.setText(result.data?.getStringExtra("pwd"))
-            }
-        }
-binding.signInJoinBt.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
-            resultLauncher.launch(intent)
-        }
-```
-- SingUpActivity.kt
-```kotlin
-binding.signUpJoinBt.setOnClickListener {
-            if (binding.signUpNameEt.text.isNullOrBlank() || binding.signUpIdEt.text.isNullOrBlank() || binding.signUpPasswordEt.text.isNullOrBlank()) {
-                Toast.makeText(this, "입력되지 않은 정보가 있습니다", Toast.LENGTH_SHORT).show()
-            } else {
-                val intent = Intent(this, SignInActivity::class.java)
-                intent.putExtra("id", binding.signUpIdEt.text.toString())
-                intent.putExtra("pwd", binding.signUpPasswordEt.text.toString())
-                setResult(Activity.RESULT_OK, intent)
-                finish()
-            }
-        }
-```
-> 2-2 성장과제: ScrollView
-- 자기소개가 길어지면 화면에 보이지 않는 뷰도 생기게 됨, 스크롤을 가능하게 하기(Hint: ScrollView)
+
+리니어 레이아웃에 넣고 layout_weight를 1을 주어 반반씩 차지하게 했다
+
+- repository_round_button.xml
 ```kotlin
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+
+        <shape>
+
+            <gradient android:angle="45"
+                android:centerColor="#808080"
+                android:endColor="#D3D3D3"
+                android:startColor="@color/black"
+                android:type="linear" />
+
+            <stroke android:width="1dp" android:color="#ff888888">
+
+            </stroke>
+
+            <corners android:radius="10dp" />
+
+        </shape>
+
+
+    </item>
+
+</selector>
+```
+
+버튼의 그라데이션 색상과 테두리 둥글게 하는 것을 drawable 폴더에 repository_round_button 과 follower_round_button xml파일을 만들어서 구현하였다
+
+1-1-2: FollowerRecyclerView, RepositoryRecyclerView 만들기
+
+- item_follower_list.xml
+```kotlin
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/item_round"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:paddingVertical="10dp">
+
+    <ImageView
+        android:id="@+id/follower_profile_iv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/profile"
+        android:padding="10dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.25" />
+
+    <TextView
+        android:id="@+id/follower_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/follower_profile_iv"
+        app:layout_constraintTop_toTopOf="@id/follower_profile_iv"
+        tools:text="이름" />
+
+    <TextView
+        android:id="@+id/follower_introduce_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/follower_name_tv"
+        app:layout_constraintTop_toBottomOf="@id/follower_name_tv"
+        tools:text="자기 소개 텍스트 입니다" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+- item_repository_list.xml
+```kotlin
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/item_round"
+    android:paddingVertical="10dp">
+
+    <TextView
+        android:id="@+id/repository_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_goneMarginStart="20dp"
+        tools:text="안드로이드 과제 레포지토리" />
+
+    <TextView
+        android:id="@+id/repository_part_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/repository_title_tv"
+        tools:text="안드로이드 파트 과제" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+1-1-3: 각각의 RecyclerView 담고있는 Fragment 2개 만들기
+
+- fragment_follower
+```kotlin
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginHorizontal="20dp"
+    android:layout_height="match_parent"
+    tools:context=".FollowerFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/follower_list_rv"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_follower_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+- fragment_repository
+```kotlin
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    tools:context=".RepositoryFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/repository_list_rv"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_repository_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        
-        <TextView
-            android:id="@+id/home_introduce_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/introduce"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/home_mbti_tv" />
-        
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+        android:layout_height="match_parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 ```
-- 사진의 비율을 1:1로 만들기 (Hint: constraintDimensionRatio)
+
+1-1-4: 각각의 버튼 눌렀을 떄 알맞은 Fragment로 전환되게 하기, defalut로 보이는 Fragment는 FollowerRecyclerView를 담은 Fragment로 하기
+
+- HomeActivity.kt
 ```kotlin
-<ImageView
-            android:id="@+id/home_profile_iv"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="50dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/profile"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-```
-### 03 도전 과제
-> 3-1 도전과제: ViewBinding에서 DataBinding으로
-- ViewBinding에서 DataBinding으로 바꾸기
-- build.gradle (모듈)
-```kotlin
-plugins {
-    ...
-    id 'kotlin-kapt'
+package com.lee989898.soptlee.main
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.lee989898.soptlee.*
+import com.lee989898.soptlee.databinding.ActivityHomeBinding
+
+class HomeActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityHomeBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        initTransactionEvent()
+    }
+
+    private fun initTransactionEvent() {
+        val followerFragment = FollowerFragment()
+        val repositoryFragment = RepositoryFragment()
+
+        supportFragmentManager.beginTransaction().add(R.id.home_list_fcv, followerFragment).commit()
+
+        binding.homeRepoListBt.setOnClickListener {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.home_list_fcv, repositoryFragment)
+            transaction.commit()
+        }
+
+        binding.homeFollowerListBt.setOnClickListener {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.home_list_fcv, followerFragment)
+            transaction.commit()
+        }
+
+    }
 }
-android {
-    
-    ...
-    dataBinding {
-          enabled true
-}
 ```
-xml파일들을 <layout> </layout>으로 감싸주었다
-- activity_sgin_up.xml
+
+1-1-5: 설명이 너무 길어서 글씨가 길어지면 뒤에 ... 으로 표시되게 하기 (xml의 ellipsize 속성과, maxLine 속성 할용)
+
+- item_repository_list.xml
 ```kotlin
 <TextView
-            android:text="@{signup.notice}"
-            app:layout_constraintTop_toBottomOf="@id/sign_up_join_bt"
-            android:layout_width="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_height="wrap_content"/>
+        android:id="@+id/repository_part_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/repository_title_tv"
+        tools:text="안드로이드 파트 과제" />
 ```
-텍스뷰를 하나 더 추가하여 회원가입 실패 원인을 알려주었다
-- SignUpActivity
+
+android:ellipsize="end"로 줄 끝 부분에 ...이 나오게 했다  
+android:maxLines="2"로 두줄을 넘어가면 나머지 부분은 나오지 않게 했다
+
+> 1-2 필수과제:  둘 중 하나의 RecyclerView는 Gird Layout으로 만들기
+
+- fragment_repository.xml
 ```kotlin
-class SignUpActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySignUpBinding
-    var notice = ""
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
-        binding.signup = this
-        binding.signUpJoinBt.setOnClickListener {
-            if (binding.signUpNameEt.text.isNullOrBlank()) {
-//                Toast.makeText(this, "입력되지 않은 정보가 있습니다", Toast.LENGTH_SHORT).show()
-                notice = "이름 비었음"
-                binding.invalidateAll()
-            } else if (binding.signUpIdEt.text.isNullOrBlank()) {
-                notice = "아이디 비었음"
-                binding.invalidateAll()
-            } else if( binding.signUpPasswordEt.text.isNullOrBlank()){
-                notice = "패스워드 비었음"
-                binding.invalidateAll()
-            } else {
-                val intent = Intent(this, SignInActivity::class.java)
-                intent.putExtra("id", binding.signUpIdEt.text.toString())
-                intent.putExtra("pwd", binding.signUpPasswordEt.text.toString())
-                setResult(Activity.RESULT_OK, intent)
-                finish()
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RepositoryFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/repository_list_rv"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_repository_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"로 그리드 레이아웃 매니저를 설정했다  
+app:spanCount="2"로 행에서 몇개씩 보일건지 설정해주었다
+
+### 02 성장 과제
+
+> 2-1 성장과제: 아이템 클릭시 상세 설명을 보여주는 Activity로 이동하기 (DetailActivity.kt)
+
+2-1-1: 아이템 클릭시 해당 아이템의 이름과 설명 값을 DetailActivity에서 보여주기
+
+- FollowerAdapter
+
+```kotlin
+package com.lee989898.soptlee
+
+import android.content.Intent
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
+import com.lee989898.soptlee.databinding.ItemFollowerListBinding
+
+class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
+
+    val followerList = mutableListOf<FollowerData>()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerViewHolder {
+        val binding =
+            ItemFollowerListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return FollowerViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: FollowerViewHolder, position: Int) {
+        holder.onBind(followerList[position])
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView?.context, DetailActivity::class.java)
+            intent.putExtra("name", followerList[position].name)
+            intent.putExtra("introduction", followerList[position].introduction)
+            ContextCompat.startActivity(holder.itemView.context, intent, null)
+        }
+
+    }
+
+    override fun getItemCount(): Int = followerList.size
+
+
+    class FollowerViewHolder(
+        private val binding: ItemFollowerListBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        init{
+            itemView.setOnClickListener {
+
             }
         }
-    }
-}
-```
-- ViewBinding과 DataBinding의 개념
-View Binding과 Data Binding은 호환이 되기 때문에 같은 모듈에서 동시에 사용가능
-ViewBinding: 뷰 결합 기능으로 뷰와 상호작용하는 코드를 쉽게 작성하게 도와주는 라이브러리
-1. Null안전
-2. 유형안전
-3. 빠른 컴파일 속도
-DataBinding: UI요소와 데이터를 프로그램적으로 연결하지 않고, 선언적 형식으로 결합할 수 있게 도와주는 라이브러리
-1. Null안전
-2. 메모리 누수 방지
-3. UI 새로고침에 대해 걱정할 필요가 없다
-차이점 
-1. 뷰바인딩의 속도가 더 빠르다
-2. 데이터바인딩은 <layout> 태그를 사용하여 만든 레이아웃을 처리한다
-3. 데이터바인딩은 양방향 바인딩을 지원한다
-            
-데이터 바인딩만 했더니 화면 회전을 하면 데이터가 사라져서 LiveData랑 ViewModel도 같이 적용해 고쳐봐야겠다!
-   
-- SignUpViewModel
-```
-enum class NoticeType{
-    NAME, ID, PWD
-}
-class SignUpViewModel : ViewModel() {
-    private val _notice = MutableLiveData<String>()
-    val notice: LiveData<String>
-        get() = _notice
-    init {
-        _notice.value = ""
-    }
-    fun updateNotice(noticeType: NoticeType){
-        when(noticeType){
-            NoticeType.NAME ->
-                _notice.value = "이름이 없음"
-            NoticeType.ID ->
-                _notice.value = "아이디가 없음"
-            NoticeType.PWD ->
-                _notice.value = "비밀번호가 없음"
+
+        fun onBind(data: FollowerData) {
+            binding.followerNameTv.text = data.name
+            binding.followerIntroduceTv.text = data.introduction
         }
     }
 }
 ```
-- SignUpActivity
+
+- DetailActivity.kt
+
 ```kotlin
-class SignUpActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySignUpBinding
-    lateinit var signUpViewModel: SignUpViewModel
+package com.lee989898.soptlee
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.util.Log
+import com.lee989898.soptlee.databinding.ActivityDetailBinding
+
+class DetailActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityDetailBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
-        signUpViewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
-        signUpViewModel.notice.observe(this, Observer {
-            binding.signUpNoticeTv.text = it.toString()
-        })
-        binding.signUpJoinBt.setOnClickListener {
-            if (binding.signUpNameEt.text.isNullOrBlank()) {
-                signUpViewModel.updateNotice(NoticeType.NAME)
-            } else if (binding.signUpIdEt.text.isNullOrBlank()) {
-                signUpViewModel.updateNotice(NoticeType.ID)
-            } else if (binding.signUpPasswordEt.text.isNullOrBlank()) {
-                signUpViewModel.updateNotice(NoticeType.PWD)
-            } else {
-                val intent = Intent(baseContext, SignInActivity::class.java)
-                intent.putExtra("id", binding.signUpIdEt.text.toString())
-                intent.putExtra("pwd", binding.signUpPasswordEt.text.toString())
-                setResult(Activity.RESULT_OK, intent)
-                finish()
-            }
-        }
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.detailNameTv.append(intent.getStringExtra("name"))
+        binding.detailIntroductionTv.append(intent.getStringExtra("introduction"))
     }
 }
 ```
-            
-> 3-2 도전과제: MVVM으로 과제 구현
-            
+
+> 2-2 성장과제: ItemDecoration 활요해서 리스트 간 간격 또는 구분선 주기
+
+- 구분선
+```kotlin
+val dividerItemDecoration =
+            DividerItemDecoration(binding.followerListRv.context, LinearLayoutManager(requireContext()).orientation)
+
+        binding.followerListRv.addItemDecoration(dividerItemDecoration)
+```
+
+- 아이템들을 유연하게 꾸미기, 아이템 간 간격(margin) 주기
+```kotlin
+val layoutParams = holder.itemView.layoutParams
+        layoutParams.height = 500
+        holder.itemView.requestLayout()
+```
+
+
+> 2-3 성장과제: RecyclerView Item 이동 삭제 구현
+
+- RecyclerView Item 기능 구현하기
+  - item 길게 눌러 위치 변경하기
+  - item을 옆으로 슬라이드 하면 삭제하는 기능 넣기
+
+### 03 도전 과제
+
+> 3-1 도전과제
+
+- Fragment 보일러 플레이트 코드 개선
+
+BaseFragment로 Fragment를 상속 받는 추상클래스를 만들어 사용하고자 하는 프래그먼트에서 상속받아 사용하여 보일러 플레이트 코드를 개선할 수 있다
+어노테이션 프로세서 사용한다. 어노테이션을 프로세서를 이용하여 보일러 플레이트 코드 생성하는 자동화 작업을 한다면, 보일러플레이트 코드를 제거하는데 가장 큰 도움이 된다
+
+- notifyDataSetChanged의 문제점
+
+notifyDataSetChanged 함수에는 큰 단점이 있다. RecyclerView에서 사소한 변경(예: 상단에 단일 항목이 추가된 경우)을 인식하지 못한다. 캐시된 항목 상태를 모두 삭제하라는 지시를 받게 되므로 모든 항목을 다시 결합해야 한다  
+최소한의 업데이트를 계산하고 전달하는 DiffUtil을 사용하는 것이 더 좋다
+
 > 이번 과제를 통해 배운 내용
-            
-데이터바인딩, 라이브데이터, 뷰모델을 처음 배워서 살짝 써봤는데 편하고 좋다. 깊게 들어가서 잘 쓸 수 있게 해야겠다
-registerForActivityResult도 이번 과제 하면서 처음 써봤는데 앱 사용자 입장에서 매우 편리하게 사용할 수 있어서 좋다 나중에도 써먹어야 겠다
-            
----
-            
+
+리사이클러뷰 삭제와 이동하는법을 배워서 유용하게 쓸 수 있겠다.  
+ItemDecoration을 활용해서 다양하게 디자인 해봐야 겠다.  
+도전 과제는 나중에 적용해봐야겠다
+
 ## __참고자료__
+
 https://philosopher-chan.tistory.com/1307
 https://velog.io/@yxnsx/Android-DataBinding
-            https://salix97.tistory.com/243
+https://salix97.tistory.com/243
+https://developer.android.com/topic/performance/vitals/render?hl=ko
+https://charlezz.medium.com/%EB%B3%B4%EC%9D%BC%EB%9F%AC%ED%94%8C%EB%A0%88%EC%9D%B4%ED%8A%B8-%EC%BD%94%EB%93%9C%EB%9E%80-boilerplate-code-83009a8d3297
             
             
-            
+        
             
             
