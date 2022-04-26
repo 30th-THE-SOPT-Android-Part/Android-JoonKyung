@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.lee989898.soptlee.*
 import com.lee989898.soptlee.databinding.ActivityHomeBinding
+import com.lee989898.soptlee.follower.FollowerFragment
+import com.lee989898.soptlee.repository.RepositoryFragment
 
 class HomeActivity : AppCompatActivity() {
 
