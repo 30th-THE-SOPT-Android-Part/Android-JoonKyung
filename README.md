@@ -17,7 +17,7 @@
 </font-family>
 ```
 
-전체적용 하면 편할꺼 같아서 themes.xml에서 전체적용 해주었다
+전체적용 하면 편할꺼 같아서 themes.xml에서 전체적용 할라 했는데 다 달라서 포기했다
 
 ```kotlin
 // themes.xml
