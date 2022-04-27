@@ -4,6 +4,45 @@
 
 > 1-1 필수과제: 과제에 폰트 적용하기
 
+```kotlin
+// noto_sans_kr.xml
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <font
+        android:font="@font/noto_sans_kr_regular"
+        android:fontWeight="400" />
+    <font
+        android:font="@font/noto_sans_kr_bold"
+        android:fontWeight="700" />
+</font-family>
+```
+
+전체적용 하면 편할꺼 같아서 themes.xml에서 전체적용 해주었다
+
+```kotlin
+// themes.xml
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.SOPTLEE" parent="Theme.AppCompat.Light">
+        
+        ...
+
+        <item name="android:textViewStyle">@style/noto_bold_TextView</item>
+        <item name="android:buttonStyle">@style/noto_bold_Button</item>
+
+    </style>
+
+    <style name="noto_bold_TextView" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/noto_sans_kr_bold</item>
+    </style>
+
+    <style name="noto_bold_Button" parent="android:Widget.Button">
+        <item name="android:fontFamily">@font/noto_sans_kr_bold</item>
+    </style>
+
+</resources>
+```
+
 > 1-2 필수과제: 기존 HomeActivity에서 만들었던 내용들을 ProfileFragment로 만들어 주기
 
 1-2-1: Button에 Selector 활용하기(선택되었을 떄, 선택되지 않았을 떄)
