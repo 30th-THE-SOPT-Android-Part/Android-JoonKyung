@@ -12,4 +12,8 @@
 
     <color name="stroke_color">#ff888888</color>
 
+    <color name="thesopt_lightgray">#DFDAED</color>
+    <color name="thesopt_purple">#8040FF</color>
+    <color name="thesopt_morelightgray">#FAF8FF</color>
+
 </resources>

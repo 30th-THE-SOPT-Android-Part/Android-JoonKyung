@@ -27,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().add(R.id.home_list_fcv, followerFragment).commit()
 
         binding.homeRepoListBt.setOnClickListener {
-            replaceFragment(repositoryFragment)
+            replaceFragment(ProfileFragment())
         }
 
         binding.homeFollowerListBt.setOnClickListener {

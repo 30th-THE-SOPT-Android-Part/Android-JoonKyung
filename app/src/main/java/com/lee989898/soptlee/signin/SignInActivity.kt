@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.lee989898.soptlee.ProfileFragment
 import com.lee989898.soptlee.databinding.ActivitySignInBinding
 import com.lee989898.soptlee.main.HomeActivity
 import com.lee989898.soptlee.signup.SignUpActivity

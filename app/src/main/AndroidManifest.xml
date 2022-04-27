@@ -13,9 +13,6 @@
             android:name=".detail.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".SampleActivity"
-            android:exported="false" />
-        <activity
             android:name=".signup.SignUpActivity"
             android:exported="false" />
         <activity
