@@ -46,6 +46,35 @@
 > 1-2 필수과제: 기존 HomeActivity에서 만들었던 내용들을 ProfileFragment로 만들어 주기
 
 1-2-1: Button에 Selector 활용하기(선택되었을 떄, 선택되지 않았을 떄)
+
+```kotlin
+<Button
+                    android:id="@+id/profile_follower_list_bt"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="13dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_pressed_stroke"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:text="팔로워 목록"
+                    android:textColor="@drawable/selector_pressed_text"
+                    android:textSize="14sp" />
+```
+
+background에 selector로 만든 xml을 넣어줬다
+
+```kotlin
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/button_click" android:state_selected="true" />
+    <item android:drawable="@drawable/button_unclick" android:state_selected="false" />
+</selector>
+```
+
+
 1-2-2: 이미지의 경우 원형으로 표시되게 만들기
 1-2-3: 아이콘은 svg 혹은 이미지(png, jpg)등으로 export해서 사용
 1-2-4: Activity 하단에 BottomNaviagation 넣어주기
