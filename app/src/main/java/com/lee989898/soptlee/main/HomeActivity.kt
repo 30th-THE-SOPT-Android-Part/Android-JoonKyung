@@ -2,13 +2,11 @@ package com.lee989898.soptlee.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.lee989898.CameraFragment
+import com.lee989898.soptlee.CameraFragment
 import com.lee989898.soptlee.*
 import com.lee989898.soptlee.databinding.ActivityHomeBinding
-import com.lee989898.soptlee.follower.FollowerFragment
-import com.lee989898.soptlee.repository.RepositoryFragment
+import com.lee989898.soptlee.home.HomeFragment
 
 class HomeActivity : AppCompatActivity() {
 
@@ -25,7 +23,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initAdapter(){
-        val fragmentList = listOf(ProfileFragment(), HomeFragment() ,CameraFragment())
+        val fragmentList = listOf(ProfileFragment(), HomeFragment() , CameraFragment())
         homeViewPagerAdapter = HomeViewPagerAdapter(this)
         homeViewPagerAdapter.fragments.addAll(fragmentList)
 

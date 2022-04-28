@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".home.HomeFragment">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/home_logo_iv"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/github_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/home_logo_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:fontFamily="@font/noto_sans_kr_bold"
+            android:text="GitHub"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_logo_iv" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/home_tab_tl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/home_logo_name_tv"
+            app:tabIndicator="@font/noto_sans_kr_medium"
+            app:tabIndicatorColor="@color/sopt_main_purple"
+            app:tabIndicatorHeight="3dp"
+            app:tabSelectedTextColor="@color/sopt_main_purple" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/home_viewPager_vp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_tab_tl" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

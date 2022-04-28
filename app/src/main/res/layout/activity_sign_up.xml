@@ -17,11 +17,13 @@
             android:id="@+id/sign_up_logo_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="56dp"
+            android:fontFamily="@font/noto_sans_kr_bold"
+            android:includeFontPadding="false"
             android:text="회원가입"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/gray_1"
+            android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,10 +32,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="55dp"
+            android:fontFamily="@font/noto_sans_kr_bold"
+            android:includeFontPadding="false"
             android:text="이름"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textColor="@color/gray_1"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sign_up_logo_tv" />
 
@@ -42,8 +46,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
             android:hint="이름을 입력해주세요."
+            android:textSize="14sp"
+            android:padding="16dp"
+            android:includeFontPadding="false"
+            android:fontFamily="@font/noto_sans_kr_regular"
+            android:textColor="#ACB5BD"
+            android:background="@drawable/selector_edit_text"
             app:layout_constraintTop_toBottomOf="@id/sign_up_name_tv" />
 
         <TextView
@@ -51,10 +61,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="아이디"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:layout_marginTop="34dp"
+            android:fontFamily="@font/noto_sans_kr_bold"
+            android:includeFontPadding="false"
+            android:text="깃허브 아이디"
+            android:textColor="@color/gray_1"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sign_up_name_et" />
 
@@ -63,7 +75,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
+            android:padding="16dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/noto_sans_kr_regular"
+            android:background="@drawable/selector_edit_text"
+            android:includeFontPadding="false"
+            android:textColor="#ACB5BD"
             android:hint="아이디를 입력해주세요."
             app:layout_constraintTop_toBottomOf="@id/sign_up_id_tv" />
 
@@ -72,10 +90,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="34dp"
+            android:fontFamily="@font/noto_sans_kr_bold"
+            android:includeFontPadding="false"
             android:text="비밀번호"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textColor="@color/gray_1"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sign_up_id_et" />
 
@@ -84,8 +104,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
+            android:padding="16dp"
+            android:textColor="#ACB5BD"
+            android:textSize="14sp"
+            android:fontFamily="@font/noto_sans_kr_regular"
+            android:background="@drawable/selector_edit_text"
             android:hint="비밀번호를 입력해주세요."
+            android:includeFontPadding="false"
             android:inputType="textPassword"
             app:layout_constraintTop_toBottomOf="@id/sign_up_password_tv" />
 
@@ -94,12 +120,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
-            android:background="#6200EE"
-            android:text="회원가입 완료"
+            android:layout_marginTop="64dp"
+            android:background="@color/thesopt_purple"
+            android:text="회원가입"
+            android:fontFamily="@font/noto_sans_kr_bold"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/sign_up_password_et" />
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@id/sign_up_password_et"
+            tools:layout_editor_absoluteX="20dp" />
 
         <TextView
             android:id="@+id/sign_up_notice_tv"

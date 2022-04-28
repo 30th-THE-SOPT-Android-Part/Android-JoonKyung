@@ -19,8 +19,6 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
 
     }
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerViewHolder {
         val binding =
             ItemFollowerListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -38,9 +36,9 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
         }
 
 
-        val layoutParams = holder.itemView.layoutParams
-        layoutParams.height = 500
-        holder.itemView.requestLayout()
+//        val layoutParams = holder.itemView.layoutParams
+//        layoutParams.height = 500
+//        holder.itemView.requestLayout()
 
 
     }
