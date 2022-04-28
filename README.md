@@ -283,13 +283,60 @@ ViewPager2는 기본적으로 중첩된 스크롤뷰를 지원하지 않고 View
 
 > 3-1 도전과제: 갤러리에서 받아온 이미지(Uri)를 Glide를 사용해서 화면에 띄워보기
 
+먼저 Glide dependency를 넣었다
+
+```kotlin
+// build.gradle
+implementation 'com.github.bumptech.glide:glide:4.13.0'
+kapt 'com.github.bumptech.glide:compiler:4.13.0'
+```
+
+intent로 갤러리로 이동했다
+
+```kotlin
+// CameraFragment.kt
+binding.cameraInsertBt.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = MediaStore.Images.Media.CONTENT_TYPE
+
+            startActivityForResult(intent, REQUEST_CODE)
+
+        }
+```
+
+Glide로 이미지를 가져왔다
+
+```kotlin
+// CameraFragment.kt
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                try {
+                    val uri = data?.data
+                    Glide.with(this)
+                        .load(uri)
+                        .into(binding.cameraImgIv)
+                } catch (e: Exception) {
+
+                }
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+
+            }
+        }
+    }
+```
+
 ### 이번 과제를 통해 배운 내용
 
+ViewPager2에서 중첩스크롤이 안될때 해결법과 Tablayout을 어떻게 사용하는지 배웠다
+또한 피그마를 어떻게 봐야하는지 배웠다. 
 
 
 ## __참고자료__
 
 https://kmight0518.tistory.com/54
 https://github.com/hdodenhof/CircleImageView
+https://daldalhanstory.tistory.com/191
             
             
