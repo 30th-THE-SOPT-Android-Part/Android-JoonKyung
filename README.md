@@ -260,25 +260,36 @@ class HomeFragment : Fragment() {
 
 > 2-1 성장과제: ViewPager2 중첩 스크롤 문제 해결하기
 
+ViewPager2는 기본적으로 중첩된 스크롤뷰를 지원하지 않고 ViewPager2는 final클래스 이기 때문에 다른 커스텀 클래스를 만들어 상속받을 수도 없다  
+
+구글 개발자 문서에서 알 수 있듯이 NestedScrollableHost로 감싸거나 android:nestedScrollingEnabled 속성을 true로 설정하면 해결된다
+나는 NestedScrollableHost 클래스를 만들어서 하였다
+
+```kotlin
+        <com.lee989898.soptlee.NestedScrollableHost
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_tab_tl">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/home_viewPager_vp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.lee989898.soptlee.NestedScrollableHost>
+```
+
 ### 03 도전 과제
 
 > 3-1 도전과제: 갤러리에서 받아온 이미지(Uri)를 Glide를 사용해서 화면에 띄워보기
 
 ### 이번 과제를 통해 배운 내용
 
-리사이클러뷰 삭제와 이동하는법을 배워서 유용하게 쓸 수 있겠다.  
-ItemDecoration을 활용해서 다양하게 디자인 해봐야 겠다.  
-도전 과제는 나중에 적용해봐야겠다
+
 
 ## __참고자료__
 
-https://philosopher-chan.tistory.com/1307
-https://velog.io/@yxnsx/Android-DataBinding
-https://salix97.tistory.com/243
-https://developer.android.com/topic/performance/vitals/render?hl=ko
-https://charlezz.medium.com/%EB%B3%B4%EC%9D%BC%EB%9F%AC%ED%94%8C%EB%A0%88%EC%9D%B4%ED%8A%B8-%EC%BD%94%EB%93%9C%EB%9E%80-boilerplate-code-83009a8d3297
-            
-            
-        
+https://kmight0518.tistory.com/54
+https://github.com/hdodenhof/CircleImageView
             
             
