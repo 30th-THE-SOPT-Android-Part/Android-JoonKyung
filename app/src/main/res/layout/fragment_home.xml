@@ -45,12 +45,18 @@
             app:tabIndicatorHeight="3dp"
             app:tabSelectedTextColor="@color/sopt_main_purple" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/home_viewPager_vp"
+        <com.lee989898.soptlee.NestedScrollableHost
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/home_tab_tl" />
+            app:layout_constraintTop_toBottomOf="@id/home_tab_tl">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/home_viewPager_vp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.lee989898.soptlee.NestedScrollableHost>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
