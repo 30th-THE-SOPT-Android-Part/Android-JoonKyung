@@ -1,5 +1,7 @@
 ## WEEK 3 ANDROID SEMINAR 3차 과제
 
+https://user-images.githubusercontent.com/90037701/166170338-cfef6782-85ef-4ca7-9e1b-d9ed4d7813ef.mp4
+
 ### 01 필수 과제
 
 > 1-1 필수과제: 과제에 폰트 적용하기
