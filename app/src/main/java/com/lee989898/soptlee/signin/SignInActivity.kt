@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import com.lee989898.soptlee.ProfileFragment
+import com.lee989898.soptlee.profile.ProfileFragment
 import com.lee989898.soptlee.databinding.ActivitySignInBinding
 import com.lee989898.soptlee.main.HomeActivity
 import com.lee989898.soptlee.signup.SignUpActivity
@@ -19,15 +19,14 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
-        val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            result ->
-            if(result.resultCode == Activity.RESULT_OK){
-                val myData = result.data ?: return@registerForActivityResult
-                binding.signInIdEt.setText(myData.getStringExtra("id"))
-                binding.signInPasswordEt.setText(myData.getStringExtra("pwd"))
+        val resultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    val myData = result.data ?: return@registerForActivityResult
+                    binding.signInIdEt.setText(myData.getStringExtra("id"))
+                    binding.signInPasswordEt.setText(myData.getStringExtra("pwd"))
+                }
             }
-        }
-
 
         binding.signInLoginBt.setOnClickListener {
             if (binding.signInIdEt.text.isNullOrBlank() || binding.signInPasswordEt.text.isNullOrBlank()) {

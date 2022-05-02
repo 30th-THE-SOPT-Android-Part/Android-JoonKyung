@@ -7,6 +7,7 @@ import com.lee989898.soptlee.CameraFragment
 import com.lee989898.soptlee.*
 import com.lee989898.soptlee.databinding.ActivityHomeBinding
 import com.lee989898.soptlee.home.HomeFragment
+import com.lee989898.soptlee.profile.ProfileFragment
 
 class HomeActivity : AppCompatActivity() {
 
@@ -22,8 +23,8 @@ class HomeActivity : AppCompatActivity() {
         initBottomNavi()
     }
 
-    private fun initAdapter(){
-        val fragmentList = listOf(ProfileFragment(), HomeFragment() , CameraFragment())
+    private fun initAdapter() {
+        val fragmentList = listOf(ProfileFragment(), HomeFragment(), CameraFragment())
         homeViewPagerAdapter = HomeViewPagerAdapter(this)
         homeViewPagerAdapter.fragments.addAll(fragmentList)
 
@@ -31,9 +32,9 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-    private fun initBottomNavi(){
+    private fun initBottomNavi() {
 
-        binding.homeVp.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
+        binding.homeVp.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 binding.homeBnv.menu.getItem(position).isChecked = true
@@ -41,7 +42,7 @@ class HomeActivity : AppCompatActivity() {
         })
 
         binding.homeBnv.setOnItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.home_profile -> {
                     binding.homeVp.currentItem = FIRST_FRAGMENT
                     return@setOnItemSelectedListener true
@@ -56,7 +57,6 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         }
-
 
 
     }

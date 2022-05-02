@@ -32,9 +32,7 @@ class CameraFragment : Fragment() {
             intent.type = MediaStore.Images.Media.CONTENT_TYPE
 
             startActivityForResult(intent, REQUEST_CODE)
-
         }
-
         return binding.root
     }
 
@@ -60,6 +58,4 @@ class CameraFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

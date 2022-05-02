@@ -12,8 +12,7 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
 
     val followerList = mutableListOf<FollowerData>()
 
-    fun deleteItem(i: Int){
-
+    fun deleteItem(i: Int) {
         followerList.removeAt(i)
         notifyDataSetChanged()
 
@@ -34,17 +33,9 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
             intent.putExtra("introduction", followerList[position].introduction)
             ContextCompat.startActivity(holder.itemView.context, intent, null)
         }
-
-
-//        val layoutParams = holder.itemView.layoutParams
-//        layoutParams.height = 500
-//        holder.itemView.requestLayout()
-
-
     }
 
     override fun getItemCount(): Int = followerList.size
-
 
     class FollowerViewHolder(
         private val binding: ItemFollowerListBinding
@@ -60,9 +51,5 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
             binding.followerNameTv.text = data.name
             binding.followerIntroduceTv.text = data.introduction
         }
-
-
-
-
     }
 }

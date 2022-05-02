@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    private fun initAdapter(){
+    private fun initAdapter() {
         val fragmentList = listOf(HomeFollowerFragment(), HomeFollowingFragment())
 
         homeTabViewPagerAdapter = HomeTabViewPagerAdapter(this)
@@ -38,10 +38,10 @@ class HomeFragment : Fragment() {
         binding.homeViewPagerVp.adapter = homeTabViewPagerAdapter
     }
 
-    private fun initTabLayout(){
+    private fun initTabLayout() {
         val tabLabel = listOf("팔로잉", "팔로워")
 
-        TabLayoutMediator(binding.homeTabTl, binding.homeViewPagerVp){tab, position ->
+        TabLayoutMediator(binding.homeTabTl, binding.homeViewPagerVp) { tab, position ->
             tab.text = tabLabel[position]
         }.attach()
     }

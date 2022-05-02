@@ -10,7 +10,6 @@ class DetailViewModel : ViewModel() {
     private val _name = MutableLiveData<String>()
     private val _introduce = MutableLiveData<String>()
 
-
     val name: LiveData<String>
         get() = _name
     val introduce: LiveData<String>
@@ -21,10 +20,8 @@ class DetailViewModel : ViewModel() {
         _introduce.value = ""
     }
 
-    fun updateDetail(name: String, introduce: String){
+    fun updateDetail(name: String, introduce: String) {
         _name.value = name
         _introduce.value = introduce
     }
-
-
 }

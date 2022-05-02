@@ -79,14 +79,6 @@ class FollowerFragment : Fragment() {
 
         binding.followerListRv.adapter = followerAdapter
 
-//        val dividerItemDecoration =
-//            DividerItemDecoration(
-//                binding.followerListRv.context,
-//                LinearLayoutManager(requireContext()).orientation
-//            )
-//
-//        binding.followerListRv.addItemDecoration(dividerItemDecoration)
-
         followerAdapter.followerList.addAll(list)
         followerAdapter.notifyDataSetChanged()
     }

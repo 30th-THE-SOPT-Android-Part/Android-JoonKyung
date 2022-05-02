@@ -21,7 +21,6 @@ class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.FollowerViewHol
 
     override fun getItemCount(): Int = repositoryList.size
 
-
     class FollowerViewHolder(
         private val binding: ItemRepositoryListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -29,8 +28,5 @@ class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.FollowerViewHol
             binding.repositoryTitleTv.text = data.title
             binding.repositoryPartTv.text = data.part
         }
-
     }
-
-
 }

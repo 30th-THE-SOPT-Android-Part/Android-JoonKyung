@@ -17,8 +17,6 @@ abstract class SwipeGesture(context: Context) : ItemTouchHelper.SimpleCallback(
     val deleteIcon = R.drawable.ic_baseline_delete_24
     val archiveIcon = R.drawable.ic_baseline_archive_24
 
-
-
     override fun onChildDraw(
         c: Canvas,
         recyclerView: RecyclerView,
@@ -46,5 +44,4 @@ abstract class SwipeGesture(context: Context) : ItemTouchHelper.SimpleCallback(
 
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
     }
-
 }

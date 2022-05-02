@@ -3,7 +3,7 @@ package com.lee989898.soptlee.home
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class HomeTabViewPagerAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
+class HomeTabViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     val fragments = mutableListOf<Fragment>()
 

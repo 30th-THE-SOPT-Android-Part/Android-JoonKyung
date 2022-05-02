@@ -19,8 +19,10 @@ class HomeFollowingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_home_following, container, false)
+        _binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_home_following, container, false
+        )
         return binding.root
     }
 

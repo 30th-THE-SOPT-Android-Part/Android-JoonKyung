@@ -45,6 +45,4 @@ class RepositoryFragment : Fragment() {
         repositoryAdapter.notifyDataSetChanged()
 
     }
-
-
 }
