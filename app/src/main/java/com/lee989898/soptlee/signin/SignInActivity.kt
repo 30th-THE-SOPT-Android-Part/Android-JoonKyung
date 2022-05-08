@@ -4,12 +4,19 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.lee989898.ServiceCreator
+import com.lee989898.soptlee.RequestSignIn
+import com.lee989898.soptlee.ResponseSignIn
 import com.lee989898.soptlee.profile.ProfileFragment
 import com.lee989898.soptlee.databinding.ActivitySignInBinding
 import com.lee989898.soptlee.main.HomeActivity
 import com.lee989898.soptlee.signup.SignUpActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignInActivity : AppCompatActivity() {
 
@@ -18,6 +25,8 @@ class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater).also { setContentView(it.root) }
+
+        initEvent()
 
         val resultLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -28,20 +37,57 @@ class SignInActivity : AppCompatActivity() {
                 }
             }
 
-        binding.signInLoginBt.setOnClickListener {
-            if (binding.signInIdEt.text.isNullOrBlank() || binding.signInPasswordEt.text.isNullOrBlank()) {
-                Toast.makeText(this, "아이디/비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
-            }
-        }
+
 
         binding.signInJoinBt.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             resultLauncher.launch(intent)
         }
 
+    }
+
+    private fun initEvent() {
+        binding.signInLoginBt.setOnClickListener {
+            if (binding.signInIdEt.text.isNullOrBlank() || binding.signInPasswordEt.text.isNullOrBlank()) {
+                Toast.makeText(this, "아이디/비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
+            }
+
+            loginNetwork()
+        }
+    }
+
+    private fun loginNetwork() {
+        var requestSignIn = RequestSignIn(
+            id = binding.signInIdEt.text.toString(),
+            password = binding.signInPasswordEt.text.toString()
+        )
+
+        val call = ServiceCreator.soptService.postLogin(requestSignIn)
+
+        call.enqueue(object : Callback<ResponseSignIn> {
+            override fun onResponse(
+                call: Call<ResponseSignIn>,
+                response: Response<ResponseSignIn>
+            ) {
+                if (response.isSuccessful) {
+                    val data = response.body()?.data
+
+                    Toast.makeText(
+                        this@SignInActivity,
+                        "${data?.email}님 반갑습니다!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
+                } else Toast.makeText(this@SignInActivity, "로그인에 실패하셨습니다.", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+            override fun onFailure(call: Call<ResponseSignIn>, t: Throwable) {
+                Log.e("NetworkTest", "error:$t")
+            }
+
+        })
     }
 }
