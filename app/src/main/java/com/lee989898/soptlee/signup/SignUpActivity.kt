@@ -57,10 +57,10 @@ class SignUpActivity : AppCompatActivity() {
 
         val call = JoinRetrofitInstance.JOIN_SERVICE.postSignUp(requestSignUp)
 
-        call.enqueue(object: Callback<ResponseSignUp> {
+        call.enqueue(object: Callback<BaseResponse<ResponseSignUp>> {
             override fun onResponse(
-                call: Call<ResponseSignUp>,
-                response: Response<ResponseSignUp>
+                call: Call<BaseResponse<ResponseSignUp>>,
+                response: Response<BaseResponse<ResponseSignUp>>
             ) {
                 if(response.isSuccessful){
                     Toast.makeText(this@SignUpActivity, "회원가입에 성공하셨습니다", Toast.LENGTH_SHORT).show()
@@ -72,7 +72,7 @@ class SignUpActivity : AppCompatActivity() {
                 }else Toast.makeText(this@SignUpActivity, "실패", Toast.LENGTH_SHORT).show()
             }
 
-            override fun onFailure(call: Call<ResponseSignUp>, t: Throwable) {
+            override fun onFailure(call: Call<BaseResponse<ResponseSignUp>>, t: Throwable) {
                 Log.e("NetworkTest", "error:$t")
             }
 

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.lee989898.soptlee.BaseResponse
 import com.lee989898.soptlee.retrofit.JoinRetrofitInstance
 import com.lee989898.soptlee.databinding.ActivitySignInBinding
 import com.lee989898.soptlee.main.HomeActivity
@@ -64,10 +65,10 @@ class SignInActivity : AppCompatActivity() {
 
         val call = JoinRetrofitInstance.JOIN_SERVICE.postLogin(requestSignIn)
 
-        call.enqueue(object : Callback<ResponseSignIn> {
+        call.enqueue(object : Callback<BaseResponse<ResponseSignIn>> {
             override fun onResponse(
-                call: Call<ResponseSignIn>,
-                response: Response<ResponseSignIn>
+                call: Call<BaseResponse<ResponseSignIn>>,
+                response: Response<BaseResponse<ResponseSignIn>>
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()?.data
@@ -82,7 +83,7 @@ class SignInActivity : AppCompatActivity() {
                     .show()
             }
 
-            override fun onFailure(call: Call<ResponseSignIn>, t: Throwable) {
+            override fun onFailure(call: Call<BaseResponse<ResponseSignIn>>, t: Throwable) {
                 Log.e("NetworkTest", "error:$t")
             }
 
