@@ -7,10 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import com.lee989898.ServiceCreator
-import com.lee989898.soptlee.RequestSignIn
-import com.lee989898.soptlee.ResponseSignIn
-import com.lee989898.soptlee.profile.ProfileFragment
+import com.lee989898.soptlee.retrofit.JoinRetrofitInstance
 import com.lee989898.soptlee.databinding.ActivitySignInBinding
 import com.lee989898.soptlee.main.HomeActivity
 import com.lee989898.soptlee.signup.SignUpActivity
@@ -58,13 +55,14 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
+
     private fun loginNetwork() {
         var requestSignIn = RequestSignIn(
             id = binding.signInIdEt.text.toString(),
             password = binding.signInPasswordEt.text.toString()
         )
 
-        val call = ServiceCreator.soptService.postLogin(requestSignIn)
+        val call = JoinRetrofitInstance.JOIN_SERVICE.postLogin(requestSignIn)
 
         call.enqueue(object : Callback<ResponseSignIn> {
             override fun onResponse(

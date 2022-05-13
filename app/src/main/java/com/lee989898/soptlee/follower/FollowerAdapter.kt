@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.lee989898.soptlee.databinding.ItemFollowerListBinding
 import com.lee989898.soptlee.detail.DetailActivity
 
@@ -15,16 +16,17 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
     fun deleteItem(i: Int) {
         followerList.removeAt(i)
         notifyDataSetChanged()
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerViewHolder {
         val binding =
             ItemFollowerListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
         return FollowerViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: FollowerViewHolder, position: Int) {
+
         holder.onBind(followerList[position])
 
         holder.itemView.setOnClickListener {
@@ -43,13 +45,15 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
 
         init {
             itemView.setOnClickListener {
-
             }
         }
 
         fun onBind(data: FollowerData) {
             binding.followerNameTv.text = data.name
-            binding.followerIntroduceTv.text = data.introduction
+
+            Glide.with(itemView)
+                .load(data.introduction)
+                .into(binding.followerProfileIv)
         }
     }
 }

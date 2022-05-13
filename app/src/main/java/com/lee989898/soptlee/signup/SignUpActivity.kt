@@ -1,20 +1,16 @@
 package com.lee989898.soptlee.signup
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.lee989898.ServiceCreator
+import com.lee989898.soptlee.retrofit.JoinRetrofitInstance
 import com.lee989898.soptlee.*
 import com.lee989898.soptlee.signin.SignInActivity
 import com.lee989898.soptlee.databinding.ActivitySignUpBinding
-import com.lee989898.soptlee.main.HomeActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -59,7 +55,7 @@ class SignUpActivity : AppCompatActivity() {
             password = binding.signUpPasswordEt.text.toString()
         )
 
-        val call = ServiceCreator.soptService.postSignUp(requestSignUp)
+        val call = JoinRetrofitInstance.JOIN_SERVICE.postSignUp(requestSignUp)
 
         call.enqueue(object: Callback<ResponseSignUp> {
             override fun onResponse(
@@ -67,6 +63,7 @@ class SignUpActivity : AppCompatActivity() {
                 response: Response<ResponseSignUp>
             ) {
                 if(response.isSuccessful){
+                    Toast.makeText(this@SignUpActivity, "회원가입에 성공하셨습니다", Toast.LENGTH_SHORT).show()
                     val intent = Intent(baseContext, SignInActivity::class.java)
                     intent.putExtra("id", binding.signUpIdEt.text.toString())
                     intent.putExtra("pwd", binding.signUpPasswordEt.text.toString())

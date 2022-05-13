@@ -4,7 +4,7 @@ import com.lee989898.soptlee.signin.JoinService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object ServiceCreator {
+object JoinRetrofitInstance {
     private const val BASE_URL = "http://13.124.62.236/"
 
     private val retrofit : Retrofit = Retrofit.Builder()

@@ -1,4 +1,4 @@
-package com.lee989898.soptlee
+package com.lee989898.soptlee.signin
 
 data class ResponseSignIn(
     val status: Int,

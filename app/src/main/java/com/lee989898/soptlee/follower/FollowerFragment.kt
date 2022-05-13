@@ -5,9 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.liveData
 import androidx.recyclerview.widget.*
 import com.lee989898.soptlee.SwipeGesture
 import com.lee989898.soptlee.databinding.FragmentFollowerBinding
+import com.lee989898.soptlee.github.GitHubService
+import com.lee989898.soptlee.github.ResponseGitHubFollowerItem
+import com.lee989898.soptlee.retrofit.GitHubRetrofitInstance
+import retrofit2.Response
 import java.util.*
 
 class FollowerFragment : Fragment() {
@@ -15,7 +21,8 @@ class FollowerFragment : Fragment() {
     private lateinit var followerAdapter: FollowerAdapter
     private var _binding: FragmentFollowerBinding? = null
     private val binding get() = _binding!!
-    lateinit var list: List<FollowerData>
+    var list = mutableListOf<FollowerData>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,25 +30,15 @@ class FollowerFragment : Fragment() {
     ): View? {
         _binding = FragmentFollowerBinding.inflate(layoutInflater, container, false)
 
-        addFollowerData()
+        getGitHubFollower()
         initFollowerAdapter()
 
         return binding.root
     }
 
-    private fun addFollowerData() {
-        list = listOf(
-            FollowerData("이강민", "안드로이드 파트장"),
-            FollowerData("김태현", "IOS 파트장"),
-            FollowerData("김두범", "기획 파트장"),
-            FollowerData("권혁진", "웹 파트장"),
-            FollowerData("채정아", "서버 파트장"),
-            FollowerData("박수아", "디자인 파트장")
-        )
-    }
-
     private fun initFollowerAdapter() {
         followerAdapter = FollowerAdapter()
+        binding.followerListRv.adapter = followerAdapter
 
         val swipeGesture = object : SwipeGesture(requireContext()) {
 
@@ -51,11 +48,11 @@ class FollowerFragment : Fragment() {
                 target: RecyclerView.ViewHolder
             ): Boolean {
 
-                val from_pos = viewHolder.adapterPosition
-                val to_pos = target.adapterPosition
+                val fromPos = viewHolder.adapterPosition
+                val toPos = target.adapterPosition
 
-                Collections.swap(list, from_pos, to_pos)
-                followerAdapter.notifyItemMoved(from_pos, to_pos)
+                Collections.swap(list, fromPos, toPos)
+                followerAdapter.notifyItemMoved(fromPos, toPos)
 
                 return false
             }
@@ -77,10 +74,31 @@ class FollowerFragment : Fragment() {
         val touchHelper = ItemTouchHelper(swipeGesture)
         touchHelper.attachToRecyclerView(binding.followerListRv)
 
-        binding.followerListRv.adapter = followerAdapter
-
         followerAdapter.followerList.addAll(list)
         followerAdapter.notifyDataSetChanged()
+
+
+    }
+
+    private fun getGitHubFollower() {
+        val retService = GitHubRetrofitInstance.getRetrofitInstance().create(GitHubService::class.java)
+
+        val pathResponse: LiveData<Response<List<ResponseGitHubFollowerItem>>> = liveData {
+            val response = retService.getGithubFollower("lee989898")
+            emit(response)
+        }
+
+        pathResponse.observe(viewLifecycleOwner) {
+            for (i in 0 until it.body()!!.size) {
+                list.add(
+                    FollowerData(
+                        it.body()?.get(i)?.login.toString(),
+                        it.body()?.get(i)?.avatar_url.toString()
+                    )
+                )
+            }
+
+        }
     }
 
     override fun onDestroyView() {

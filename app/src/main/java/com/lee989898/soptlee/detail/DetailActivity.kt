@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.lee989898.soptlee.R
 import com.lee989898.soptlee.databinding.ActivityDetailBinding
 import com.lee989898.soptlee.signup.SignUpViewModel
@@ -29,7 +30,9 @@ class DetailActivity : AppCompatActivity() {
         }
 
         detailViewModel.introduce.observe(this) {
-            binding.detailIntroductionTv.text = it.toString()
+            Glide.with(this)
+                .load(it.toString())
+                .into(binding.detailProfileIv)
         }
     }
 }
