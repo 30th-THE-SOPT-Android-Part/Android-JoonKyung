@@ -1,5 +1,7 @@
 ## WEEK 4 ANDROID SEMINAR 4차 과제
 
+https://user-images.githubusercontent.com/90037701/168259597-2dd6ecc3-ac29-4ad1-960f-a9852a8a578a.mp4
+
 ### 01 필수 과제
 
 > 1-1 필수과제: 로그인/회원가입 API 연동
