@@ -154,6 +154,29 @@ object GitHubCreator {
 
 > 3-1 도전과제: 비동기 처리 라이브러리를 이용해 서버통신 하기
 
+```kotlin
+private fun getRequestWithPathParameters() {
+        val retService = RetrofitInstance.getRetrofitInstance().create(GitHubService::class.java)
+
+        val pathResponse: LiveData<Response<List<ResponseGitHubFollowerItem>>> = liveData {
+            val response = retService.getGithubFollower("lee989898")
+            emit(response)
+        }
+
+        pathResponse.observe(viewLifecycleOwner) {
+            for (i in 0 until it.body()!!.size) {
+                list.add(
+                    FollowerData(
+                        it.body()?.get(i)?.login.toString(),
+                        it.body()?.get(i)?.avatar_url.toString()
+                    )
+                )
+            }
+
+        }
+    }
+```
+
 ### 이번 과제를 통해 배운 내용
 
 ## __참고자료__
