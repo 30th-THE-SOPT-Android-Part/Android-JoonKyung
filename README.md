@@ -7,7 +7,10 @@
 - POSTMAN 테스트 + 회원가입 완료 + 로그인 완료 토스트 메시지
 
 ![스크린샷(419)](https://user-images.githubusercontent.com/90037701/168191793-45524e96-5b00-4200-b554-94b2bee6ca40.png)
-![스크린샷(420)](https://user-images.githubusercontent.com/90037701/168191799-432fcbf4-8cef-474b-8c5f-8bbb9d039219.png)
+![스크린샷(420)](https://user-images.githubusercontent.com/90037701/168191799-432fcbf4-8cef-474b-8c5f-8bbb9d039219
+
+https://user-images.githubusercontent.com/90037701/168192406-e651ade0-cfae-4316-ac5e-4b79e0f2aace.mp4.png)
+
 
 - retrafit interface와 구현체 코드, Request / Respanse 객체에 대한 코드 필수
 
