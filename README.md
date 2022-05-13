@@ -150,6 +150,34 @@ object GitHubCreator {
 
 > 2-2 성장과제: 데이터클래스 중복 내용 해결
 
+중복되는 내용을 담은 데이터 클래스
+
+```kotlin
+data class BaseResponse<T>(
+    val status: Int,
+    val message: String,
+    val data: T
+)
+```
+
+T에 해당하는 데이터 클래스
+
+```kotlin
+data class ResponseSignIn(
+    val name: String,
+    val email: String
+)
+```
+
+사용
+
+```kotlin
+@POST("auth/signin")
+    fun postLogin(
+        @Body body: RequestSignIn
+): Call<BaseResponse<ResponseSignIn>>
+```
+
 ### 03 도전 과제
 
 > 3-1 도전과제: 비동기 처리 라이브러리를 이용해 서버통신 하기
@@ -179,8 +207,10 @@ private fun getGitHubFollower() {
 
 ### 이번 과제를 통해 배운 내용
 
+wrapper 클래스 이용하는 법을 배웠다
+코루틴으로 서버랑 연결하는법을 배웠다
+
 ## __참고자료__
 
-https://www.baeldung.com/kotlin/data-objects
 https://docs.github.com/en/rest/users/followers#list-the-people-a-user-follows
        
