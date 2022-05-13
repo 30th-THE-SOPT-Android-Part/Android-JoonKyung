@@ -1,6 +1,6 @@
-package com.lee989898
+package com.lee989898.soptlee.retrofit
 
-import com.lee989898.soptlee.SoptService
+import com.lee989898.soptlee.signin.JoinService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -12,5 +12,5 @@ object ServiceCreator {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val soptService: SoptService = retrofit.create(SoptService::class.java)
+    val JOIN_SERVICE: JoinService = retrofit.create(JoinService::class.java)
 }
