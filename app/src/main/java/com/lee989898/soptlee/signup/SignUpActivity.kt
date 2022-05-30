@@ -5,86 +5,45 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.lee989898.soptlee.retrofit.JoinRetrofitInstance
 import com.lee989898.soptlee.*
 import com.lee989898.soptlee.signin.SignInActivity
 import com.lee989898.soptlee.databinding.ActivitySignUpBinding
+import com.lee989898.soptlee.util.binding.BindingActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SignUpActivity : AppCompatActivity() {
+class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
 
-    private lateinit var binding: ActivitySignUpBinding
-    lateinit var signUpViewModel: SignUpViewModel
-
+    private val signUpViewModel by viewModels<SignUpViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
 
-        signUpViewModel = ViewModelProvider(this)[SignUpViewModel::class.java]
-
-        signUpCheck()
-
-        binding.signUpJoinBt.setOnClickListener {
-            when {
-                binding.signUpNameEt.text.isNullOrBlank() -> signUpViewModel.updateNotice(NoticeType.NAME)
-                binding.signUpIdEt.text.isNullOrBlank() -> signUpViewModel.updateNotice(NoticeType.ID)
-                binding.signUpPasswordEt.text.isNullOrBlank() -> signUpViewModel.updateNotice(
-                    NoticeType.PWD
-                )
-                else -> {
-                    val intent = Intent(baseContext, SignInActivity::class.java)
-                    intent.putExtra("id", binding.signUpIdEt.text.toString())
-                    intent.putExtra("pwd", binding.signUpPasswordEt.text.toString())
-                    setResult(RESULT_OK, intent)
-                }
-            }
-            signUpNetwork()
-        }
-
+        binding.signUpViewModel = signUpViewModel
+        observeSignUpMessage()
+        observeSignUpSuccess()
     }
 
-    private fun signUpNetwork() {
-        var requestSignUp = RequestSignUp(
-            name = binding.signUpNameEt.text.toString(),
-            id = binding.signUpIdEt.text.toString(),
-            password = binding.signUpPasswordEt.text.toString()
-        )
-
-        val call = JoinRetrofitInstance.JOIN_SERVICE.postSignUp(requestSignUp)
-
-        call.enqueue(object: Callback<BaseResponse<ResponseSignUp>> {
-            override fun onResponse(
-                call: Call<BaseResponse<ResponseSignUp>>,
-                response: Response<BaseResponse<ResponseSignUp>>
-            ) {
-                if(response.isSuccessful){
-                    Toast.makeText(this@SignUpActivity, "회원가입에 성공하셨습니다", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(baseContext, SignInActivity::class.java)
-                    intent.putExtra("id", binding.signUpIdEt.text.toString())
-                    intent.putExtra("pwd", binding.signUpPasswordEt.text.toString())
-                    setResult(RESULT_OK, intent)
-                    finish()
-                }else Toast.makeText(this@SignUpActivity, "실패", Toast.LENGTH_SHORT).show()
+    private fun observeSignUpMessage() {
+        signUpViewModel.statusMessage.observe(this) {
+            it.getContentIfNotHandled()?.let {
+                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
             }
-
-            override fun onFailure(call: Call<BaseResponse<ResponseSignUp>>, t: Throwable) {
-                Log.e("NetworkTest", "error:$t")
-            }
-
-        })
-
+        }
     }
 
-    private fun signUpCheck() {
-
-        signUpViewModel.notice.observe(this) {
-            binding.signUpNoticeTv.text = it.toString()
+    private fun observeSignUpSuccess() {
+        signUpViewModel.joinSuccess.observe(this) {
+            val intent = Intent(this, SignInActivity::class.java)
+            intent.putExtra("id", signUpViewModel.email.value)
+            intent.putExtra("pwd", signUpViewModel.password.value)
+            setResult(RESULT_OK, intent)
+            finish()
         }
-
     }
 }

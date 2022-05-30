@@ -28,10 +28,9 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
     }
 
     fun goToSignUp() {
-        binding.signInJoinBt.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
-            resultLauncher.launch(intent)
-        }
+        val intent = Intent(this, SignUpActivity::class.java)
+        resultLauncher.launch(intent)
+        finish()
     }
 
     private fun activityResultLauncher(): ActivityResultLauncher<Intent> {
@@ -49,6 +48,7 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
     private fun observeLogin() {
         signInViewModel.loginSuccess.observe(this) {
             startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
+            finish()
         }
     }
 

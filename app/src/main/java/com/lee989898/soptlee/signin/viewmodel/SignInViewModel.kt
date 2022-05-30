@@ -48,19 +48,16 @@ class SignInViewModel : ViewModel() {
                 response: Response<BaseResponse<ResponseSignIn>>
             ) {
                 if (response.isSuccessful) {
+                    _loginSuccess.value = true
                     val data = response.body()?.data
                     _statusMessage.postValue(Event("${data?.email}님 반갑습니다!"))
-                    _loginSuccess.value = true
                 } else
                     _statusMessage.postValue(Event("회원정보가 틀립니다."))
             }
-
             override fun onFailure(call: Call<BaseResponse<ResponseSignIn>>, t: Throwable) {
                 Log.e("NetworkTest", "error:$t")
             }
 
         })
     }
-
-
 }

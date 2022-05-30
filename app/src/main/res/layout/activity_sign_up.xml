@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="signUpViewModel"
+            type="com.lee989898.soptlee.signup.SignUpViewModel" />
 
     </data>
 
@@ -47,13 +50,14 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="6dp"
-            android:hint="이름을 입력해주세요."
-            android:textSize="14sp"
-            android:padding="16dp"
-            android:includeFontPadding="false"
-            android:fontFamily="@font/noto_sans_kr_regular"
-            android:textColor="#ACB5BD"
             android:background="@drawable/selector_edit_text"
+            android:fontFamily="@font/noto_sans_kr_regular"
+            android:hint="이름을 입력해주세요."
+            android:includeFontPadding="false"
+            android:padding="16dp"
+            android:text="@={signUpViewModel.name}"
+            android:textColor="#ACB5BD"
+            android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@id/sign_up_name_tv" />
 
         <TextView
@@ -76,13 +80,14 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="6dp"
-            android:padding="16dp"
-            android:textSize="14sp"
-            android:fontFamily="@font/noto_sans_kr_regular"
             android:background="@drawable/selector_edit_text"
-            android:includeFontPadding="false"
-            android:textColor="#ACB5BD"
+            android:fontFamily="@font/noto_sans_kr_regular"
             android:hint="아이디를 입력해주세요."
+            android:includeFontPadding="false"
+            android:padding="16dp"
+            android:text="@={signUpViewModel.email}"
+            android:textColor="#ACB5BD"
+            android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@id/sign_up_id_tv" />
 
         <TextView
@@ -105,25 +110,30 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="6dp"
-            android:padding="16dp"
-            android:textColor="#ACB5BD"
-            android:textSize="14sp"
-            android:fontFamily="@font/noto_sans_kr_regular"
             android:background="@drawable/selector_edit_text"
+            android:fontFamily="@font/noto_sans_kr_regular"
             android:hint="비밀번호를 입력해주세요."
             android:includeFontPadding="false"
             android:inputType="textPassword"
+            android:padding="16dp"
+            android:text="@={signUpViewModel.password}"
+            android:textColor="#ACB5BD"
+            android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@id/sign_up_password_tv" />
 
         <Button
             android:id="@+id/sign_up_join_bt"
+            name="@{signUpViewModel.name}"
+            email="@{signUpViewModel.email}"
+            pwd="@{signUpViewModel.password}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="64dp"
             android:background="@color/thesopt_purple"
-            android:text="회원가입"
             android:fontFamily="@font/noto_sans_kr_bold"
+            android:onClick="@{()->signUpViewModel.signUp()}"
+            android:text="회원가입"
             android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintTop_toBottomOf="@id/sign_up_password_et"
@@ -133,6 +143,7 @@
             android:id="@+id/sign_up_notice_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{signUpViewModel.notice}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sign_up_join_bt" />
 
