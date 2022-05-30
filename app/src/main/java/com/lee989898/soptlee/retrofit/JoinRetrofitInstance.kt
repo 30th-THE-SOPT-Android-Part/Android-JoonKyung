@@ -1,6 +1,6 @@
 package com.lee989898.soptlee.retrofit
 
-import com.lee989898.soptlee.signin.JoinService
+import com.lee989898.soptlee.signin.data.JoinService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

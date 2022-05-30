@@ -3,6 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="signInViewModel"
+            type="com.lee989898.soptlee.signin.viewmodel.SignInViewModel" />
+
+        <variable
+            name="signInActivity"
+            type="com.lee989898.soptlee.signin.SignInActivity" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -43,6 +55,7 @@
             android:hint="깃허브 아이디를 입력해주세요."
             android:includeFontPadding="false"
             android:padding="16dp"
+            android:text="@={signInViewModel.email}"
             android:textColor="#B5B5B5"
             android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@id/sign_in_id_tv" />
@@ -73,18 +86,22 @@
             android:includeFontPadding="false"
             android:inputType="textPassword"
             android:padding="16dp"
+            android:text="@={signInViewModel.password}"
             android:textColor="#B5B5B5"
             android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@id/sign_in_password_tv" />
 
         <Button
             android:id="@+id/sign_in_login_bt"
+            email="@{signInViewModel.email}"
+            pwd="@{signInViewModel.password}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="7dp"
             android:background="@color/thesopt_purple"
             android:fontFamily="@font/noto_sans_kr_bold"
+            android:onClick="@{()->signInViewModel.signIn()}"
             android:text="로그인"
             android:textColor="@color/white"
             android:textSize="15sp"
@@ -98,6 +115,7 @@
             android:layout_marginBottom="20dp"
             android:background="@color/thesopt_lightpurple"
             android:fontFamily="@font/noto_sans_kr_bold"
+            android:onClick="@{()->signInActivity.goToSignUp()}"
             android:text="회원가입"
             android:textColor="@color/white"
             android:textSize="15sp"

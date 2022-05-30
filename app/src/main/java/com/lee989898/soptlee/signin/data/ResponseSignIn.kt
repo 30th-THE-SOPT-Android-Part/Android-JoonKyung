@@ -1,4 +1,4 @@
-package com.lee989898.soptlee.signin
+package com.lee989898.soptlee.signin.data
 
 data class ResponseSignIn(
     val name: String,

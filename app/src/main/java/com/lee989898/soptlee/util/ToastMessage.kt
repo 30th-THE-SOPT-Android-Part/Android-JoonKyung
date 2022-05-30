@@ -1,4 +1,4 @@
-package com.lee989898.soptlee.util.toast
+package com.lee989898.soptlee.util
 
 import android.content.Context
 import android.widget.Toast

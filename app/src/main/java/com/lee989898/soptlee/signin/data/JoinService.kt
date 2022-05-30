@@ -1,4 +1,4 @@
-package com.lee989898.soptlee.signin
+package com.lee989898.soptlee.signin.data
 
 import com.lee989898.soptlee.BaseResponse
 import com.lee989898.soptlee.ResponseSignUp
