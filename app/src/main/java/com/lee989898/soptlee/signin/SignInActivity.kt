@@ -11,7 +11,9 @@ import com.lee989898.soptlee.databinding.ActivitySignInBinding
 import com.lee989898.soptlee.main.HomeActivity
 import com.lee989898.soptlee.signin.viewmodel.SignInViewModel
 import com.lee989898.soptlee.signup.SignUpActivity
+import com.lee989898.soptlee.util.SharedPreferences
 import com.lee989898.soptlee.util.binding.BindingActivity
+import com.lee989898.soptlee.util.showToast
 
 class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
 
@@ -25,6 +27,20 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
         resultLauncher = activityResultLauncher()
         observeSignInMessage()
         observeLogin()
+        SharedPreferences.init(this)
+        isAutoLogin()
+    }
+
+    fun autoLogin() {
+        binding.ivAutoLogin.isSelected = !binding.ivAutoLogin.isSelected
+        SharedPreferences.setAutoLogin(binding.ivAutoLogin.isSelected)
+    }
+
+    private fun isAutoLogin() {
+        if (SharedPreferences.getAutoLogin()) {
+            showToast("자동로그인 되었습니다")
+            startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
+        }
     }
 
     fun goToSignUp() {

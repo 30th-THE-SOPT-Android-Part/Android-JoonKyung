@@ -1,5 +1,6 @@
 package com.lee989898.soptlee.profile
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -7,14 +8,19 @@ import com.lee989898.soptlee.R
 import com.lee989898.soptlee.databinding.FragmentProfileBinding
 import com.lee989898.soptlee.follower.FollowerFragment
 import com.lee989898.soptlee.repository.RepositoryFragment
+import com.lee989898.soptlee.setting.SettingActivity
 import com.lee989898.soptlee.util.binding.BindingFragment
 
 class ProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.fragment_profile) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.profileFragment = this
         initTransactionEvent()
+    }
+
+    fun goToSetting(){
+        startActivity(Intent(activity, SettingActivity::class.java))
     }
 
     private fun initTransactionEvent() {

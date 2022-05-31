@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="profileFragment"
+            type="com.lee989898.soptlee.profile.ProfileFragment" />
+
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -25,10 +29,12 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
+                    android:id="@+id/iv_setting"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="7dp"
                     android:layout_marginEnd="7dp"
+                    android:onClick="@{()->profileFragment.goToSetting()}"
                     android:src="@drawable/profile_setting"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
