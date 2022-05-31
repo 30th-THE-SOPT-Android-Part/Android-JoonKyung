@@ -1,46 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/item_round"
-    android:foreground="?android:selectableItemBackground"
-    android:paddingVertical="10dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/follower_profile_iv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:src="@drawable/profile"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.25" />
+    <data>
 
-    <TextView
-        android:id="@+id/follower_name_tv"
-        android:layout_width="wrap_content"
+        <variable
+            name="followerRecycler"
+            type="com.lee989898.soptlee.follower.data.FollowerData" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@id/follower_profile_iv"
-        app:layout_constraintTop_toTopOf="@id/follower_profile_iv"
-        tools:text="이름" />
+        android:foreground="?android:selectableItemBackground">
 
-    <TextView
-        android:id="@+id/follower_introduce_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/follower_name_tv"
-        app:layout_constraintTop_toBottomOf="@id/follower_name_tv"
-        tools:text="자기 소개 텍스트 입니다" />
+        <ImageView
+            android:id="@+id/follower_profile_iv"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            tools:src="@drawable/profile"
+            recyclerGlide="@{followerRecycler.image}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/follower_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:fontFamily="@font/noto_sans_kr_bold"
+            android:includeFontPadding="false"
+            android:textColor="@color/gray_1"
+            android:text="@{followerRecycler.name}"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/follower_profile_iv"
+            app:layout_constraintTop_toTopOf="@id/follower_profile_iv"
+            tools:text="이름" />
+
+        <TextView
+            android:id="@+id/follower_introduce_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/noto_sans_kr_regular"
+            android:includeFontPadding="false"
+            android:textColor="@color/thesopt_darkgray"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/follower_name_tv"
+            app:layout_constraintTop_toBottomOf="@id/follower_name_tv"
+            tools:text="자기 소개 텍스트 입니다" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDE2E5"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,42 +1,63 @@
 package com.lee989898.soptlee.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
+import com.lee989898.soptlee.camera.CameraFragment
 import com.lee989898.soptlee.*
 import com.lee989898.soptlee.databinding.ActivityHomeBinding
+import com.lee989898.soptlee.home.HomeFragment
+import com.lee989898.soptlee.profile.ProfileFragment
+import com.lee989898.soptlee.util.binding.BindingActivity
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
-    private lateinit var binding: ActivityHomeBinding
+    private lateinit var homeViewPagerAdapter: HomeViewPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        initTransactionEvent()
+        initAdapter()
+        initBottomNavi()
     }
 
-    private fun initTransactionEvent() {
-        val followerFragment = FollowerFragment()
-        val repositoryFragment = RepositoryFragment()
+    private fun initAdapter() {
+        val fragmentList = listOf(ProfileFragment(), HomeFragment(), CameraFragment())
+        homeViewPagerAdapter = HomeViewPagerAdapter(this)
+        homeViewPagerAdapter.fragments.addAll(fragmentList)
 
-        supportFragmentManager.beginTransaction().add(R.id.home_list_fcv, followerFragment).commit()
-
-        binding.homeRepoListBt.setOnClickListener {
-            replaceFragment(repositoryFragment)
-        }
-
-        binding.homeFollowerListBt.setOnClickListener {
-            replaceFragment(followerFragment)
-        }
+        binding.homeVp.adapter = homeViewPagerAdapter
 
     }
 
-    private fun replaceFragment(replaceFragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.home_list_fcv, replaceFragment)
-        transaction.commit()
+    private fun initBottomNavi() {
+
+        binding.homeVp.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                binding.homeBnv.menu.getItem(position).isChecked = true
+            }
+        })
+
+        binding.homeBnv.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.home_profile -> {
+                    binding.homeVp.currentItem = FIRST_FRAGMENT
+                    return@setOnItemSelectedListener true
+                }
+                R.id.home_home -> {
+                    binding.homeVp.currentItem = SECOND_FRAGMENT
+                    return@setOnItemSelectedListener true
+                }
+                else -> {
+                    binding.homeVp.currentItem = THIRD_FRAGMENT
+                    return@setOnItemSelectedListener true
+                }
+            }
+        }
+    }
+
+    companion object {
+        const val FIRST_FRAGMENT = 0
+        const val SECOND_FRAGMENT = 1
+        const val THIRD_FRAGMENT = 2
     }
 }
