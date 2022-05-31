@@ -1,4 +1,4 @@
-package com.lee989898.soptlee.github
+package com.lee989898.soptlee.follower.data
 
 data class ResponseGitHubFollowerItem(
     val avatar_url: String,

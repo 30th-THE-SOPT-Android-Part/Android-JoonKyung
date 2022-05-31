@@ -1,4 +1,4 @@
-package com.lee989898.soptlee
+package com.lee989898.soptlee.util
 
 data class BaseResponse<T>(
     val status: Int,

@@ -1,10 +1,11 @@
-package com.lee989898.soptlee
+package com.lee989898.soptlee.util
 
 import android.content.Context
 import android.graphics.Canvas
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.lee989898.soptlee.R
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
 abstract class SwipeGesture(context: Context) : ItemTouchHelper.SimpleCallback(

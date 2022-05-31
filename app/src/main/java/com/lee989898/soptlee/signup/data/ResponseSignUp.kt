@@ -1,4 +1,4 @@
-package com.lee989898.soptlee
+package com.lee989898.soptlee.signup.data
 
 data class ResponseSignUp(
     val data: SignUpData

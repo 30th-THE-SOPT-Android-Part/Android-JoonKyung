@@ -1,4 +1,4 @@
-package com.lee989898.soptlee
+package com.lee989898.soptlee.util
 
 import android.content.Context
 import android.util.AttributeSet

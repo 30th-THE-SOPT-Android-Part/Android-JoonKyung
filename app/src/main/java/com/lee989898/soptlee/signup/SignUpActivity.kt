@@ -1,21 +1,14 @@
 package com.lee989898.soptlee.signup
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
-import com.lee989898.soptlee.retrofit.JoinRetrofitInstance
 import com.lee989898.soptlee.*
 import com.lee989898.soptlee.signin.SignInActivity
 import com.lee989898.soptlee.databinding.ActivitySignUpBinding
+import com.lee989898.soptlee.signup.viewmodel.SignUpViewModel
 import com.lee989898.soptlee.util.binding.BindingActivity
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
 

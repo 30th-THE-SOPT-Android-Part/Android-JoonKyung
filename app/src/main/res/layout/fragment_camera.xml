@@ -4,12 +4,16 @@
 
     <data>
 
+        <variable
+            name="cameraFragment"
+            type="com.lee989898.soptlee.camera.CameraFragment" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".CameraFragment">
+        tools:context=".camera.CameraFragment">
 
         <ImageView
             android:id="@+id/camera_img_iv"
@@ -41,6 +45,7 @@
             android:background="@color/sopt_main_purple"
             android:fontFamily="@font/noto_sans_kr_bold"
             android:text="첨부하기"
+            android:onClick="@{()->cameraFragment.gallerySelect()}"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/camera_explain_tv" />
 

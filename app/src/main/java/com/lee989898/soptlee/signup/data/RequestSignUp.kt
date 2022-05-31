@@ -1,4 +1,4 @@
-package com.lee989898.soptlee.signup
+package com.lee989898.soptlee.signup.data
 
 import com.google.gson.annotations.SerializedName
 

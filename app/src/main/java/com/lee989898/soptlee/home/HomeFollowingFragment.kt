@@ -8,27 +8,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.lee989898.soptlee.R
 import com.lee989898.soptlee.databinding.FragmentHomeFollowingBinding
+import com.lee989898.soptlee.util.binding.BindingFragment
 
 
-class HomeFollowingFragment : Fragment() {
+class HomeFollowingFragment :
+    BindingFragment<FragmentHomeFollowingBinding>(R.layout.fragment_home_following) {
 
-    private var _binding: FragmentHomeFollowingBinding? = null
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_home_following, container, false
-        )
-        return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
 }

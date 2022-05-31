@@ -1,43 +1,48 @@
-package com.lee989898.soptlee.follower
+package com.lee989898.soptlee.follower.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.lee989898.soptlee.databinding.ItemFollowerListBinding
 import com.lee989898.soptlee.detail.DetailActivity
+import com.lee989898.soptlee.follower.data.FollowerData
 
 class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
 
-    val followerList = mutableListOf<FollowerData>()
+    private val _data = mutableListOf<FollowerData>()
+    var data: List<FollowerData> = _data
+        set(value) {
+            _data.clear()
+            _data.addAll(value)
+            notifyDataSetChanged()
+        }
 
     fun deleteItem(i: Int) {
-        followerList.removeAt(i)
+        _data.removeAt(i)
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerViewHolder {
         val binding =
             ItemFollowerListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
         return FollowerViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: FollowerViewHolder, position: Int) {
 
-        holder.onBind(followerList[position])
+        holder.bind(_data[position])
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView?.context, DetailActivity::class.java)
-            intent.putExtra("name", followerList[position].name)
-            intent.putExtra("introduction", followerList[position].introduction)
+            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
+            intent.putExtra("name", _data[position].name)
+            intent.putExtra("image", _data[position].image)
             ContextCompat.startActivity(holder.itemView.context, intent, null)
         }
     }
 
-    override fun getItemCount(): Int = followerList.size
+    override fun getItemCount(): Int = _data.size
 
     class FollowerViewHolder(
         private val binding: ItemFollowerListBinding
@@ -45,15 +50,12 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
 
         init {
             itemView.setOnClickListener {
+
             }
         }
 
-        fun onBind(data: FollowerData) {
-            binding.followerNameTv.text = data.name
-
-            Glide.with(itemView)
-                .load(data.introduction)
-                .into(binding.followerProfileIv)
+        fun bind(data: FollowerData) {
+            binding.followerRecycler = data
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.lee989898.soptlee.repository
+package com.lee989898.soptlee.repository.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,13 @@ import com.lee989898.soptlee.databinding.ItemRepositoryListBinding
 
 class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.FollowerViewHolder>() {
 
-    val repositoryList = mutableListOf<RepositoryData>()
+    private val _data = mutableListOf<RepositoryData>()
+    var data: List<RepositoryData> = _data
+        set(value) {
+            _data.clear()
+            _data.addAll(value)
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerViewHolder {
         val binding =
@@ -16,17 +22,17 @@ class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.FollowerViewHol
     }
 
     override fun onBindViewHolder(holder: FollowerViewHolder, position: Int) {
-        holder.onBind(repositoryList[position])
+        holder.bind(_data[position])
     }
 
-    override fun getItemCount(): Int = repositoryList.size
+    override fun getItemCount(): Int = _data.size
 
     class FollowerViewHolder(
         private val binding: ItemRepositoryListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: RepositoryData) {
-            binding.repositoryTitleTv.text = data.title
-            binding.repositoryPartTv.text = data.part
+
+        fun bind(data: RepositoryData) {
+            binding.repositoryRecycler = data
         }
     }
 }

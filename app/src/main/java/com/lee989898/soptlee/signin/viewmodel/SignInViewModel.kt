@@ -1,17 +1,12 @@
 package com.lee989898.soptlee.signin.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.lee989898.soptlee.BaseResponse
 import com.lee989898.soptlee.retrofit.JoinRetrofitInstance
 import com.lee989898.soptlee.signin.data.RequestSignIn
-import com.lee989898.soptlee.signin.data.ResponseSignIn
 import com.lee989898.soptlee.util.Event
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.lee989898.soptlee.util.enqueueUtil
 
 class SignInViewModel : ViewModel() {
 
@@ -42,22 +37,15 @@ class SignInViewModel : ViewModel() {
 
         val call = JoinRetrofitInstance.JOIN_SERVICE.postLogin(requestSignIn)
 
-        call.enqueue(object : Callback<BaseResponse<ResponseSignIn>> {
-            override fun onResponse(
-                call: Call<BaseResponse<ResponseSignIn>>,
-                response: Response<BaseResponse<ResponseSignIn>>
-            ) {
-                if (response.isSuccessful) {
-                    _loginSuccess.value = true
-                    val data = response.body()?.data
-                    _statusMessage.postValue(Event("${data?.email}님 반갑습니다!"))
-                } else
-                    _statusMessage.postValue(Event("회원정보가 틀립니다."))
+        call.enqueueUtil(
+            onSuccess = {
+                _loginSuccess.value = true
+                val data = it.data
+                _statusMessage.postValue(Event("${data.email}님 반갑습니다!"))
+            },
+            onError = {
+                _statusMessage.postValue(Event("회원정보가 틀립니다."))
             }
-            override fun onFailure(call: Call<BaseResponse<ResponseSignIn>>, t: Throwable) {
-                Log.e("NetworkTest", "error:$t")
-            }
-
-        })
+        )
     }
 }

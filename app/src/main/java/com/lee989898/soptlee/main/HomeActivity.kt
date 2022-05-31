@@ -1,24 +1,20 @@
 package com.lee989898.soptlee.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
-import com.lee989898.soptlee.CameraFragment
+import com.lee989898.soptlee.camera.CameraFragment
 import com.lee989898.soptlee.*
 import com.lee989898.soptlee.databinding.ActivityHomeBinding
 import com.lee989898.soptlee.home.HomeFragment
 import com.lee989898.soptlee.profile.ProfileFragment
+import com.lee989898.soptlee.util.binding.BindingActivity
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
-    private lateinit var binding: ActivityHomeBinding
     private lateinit var homeViewPagerAdapter: HomeViewPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
         initAdapter()
         initBottomNavi()
     }
@@ -57,8 +53,6 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         }
-
-
     }
 
     companion object {
@@ -66,6 +60,4 @@ class HomeActivity : AppCompatActivity() {
         const val SECOND_FRAGMENT = 1
         const val THIRD_FRAGMENT = 2
     }
-
-
 }

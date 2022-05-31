@@ -1,32 +1,20 @@
 package com.lee989898.soptlee.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayoutMediator
 import com.lee989898.soptlee.R
 import com.lee989898.soptlee.databinding.FragmentHomeBinding
+import com.lee989898.soptlee.util.binding.BindingFragment
 
+class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
-class HomeFragment : Fragment() {
-
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
     private lateinit var homeTabViewPagerAdapter: HomeTabViewPagerAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initAdapter()
         initTabLayout()
-
-        return binding.root
     }
 
     private fun initAdapter() {
@@ -44,11 +32,6 @@ class HomeFragment : Fragment() {
         TabLayoutMediator(binding.homeTabTl, binding.homeViewPagerVp) { tab, position ->
             tab.text = tabLabel[position]
         }.attach()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
 

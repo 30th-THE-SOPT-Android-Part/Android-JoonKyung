@@ -2,29 +2,19 @@ package com.lee989898.soptlee.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import com.lee989898.soptlee.R
 import com.lee989898.soptlee.databinding.FragmentProfileBinding
 import com.lee989898.soptlee.follower.FollowerFragment
 import com.lee989898.soptlee.repository.RepositoryFragment
+import com.lee989898.soptlee.util.binding.BindingFragment
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.fragment_profile) {
 
-    private var _binding: FragmentProfileBinding? = null
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         initTransactionEvent()
-
-        return binding.root
     }
 
     private fun initTransactionEvent() {
@@ -44,8 +34,6 @@ class ProfileFragment : Fragment() {
             buttonSelected(false)
             replaceFragment(repositoryFragment)
         }
-
-
     }
 
     private fun buttonSelected(select: Boolean) {
@@ -59,8 +47,4 @@ class ProfileFragment : Fragment() {
         transaction.commit()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

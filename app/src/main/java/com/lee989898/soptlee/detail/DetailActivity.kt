@@ -1,38 +1,26 @@
 package com.lee989898.soptlee.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
+import androidx.activity.viewModels
 import com.lee989898.soptlee.R
 import com.lee989898.soptlee.databinding.ActivityDetailBinding
-import com.lee989898.soptlee.signup.SignUpViewModel
+import com.lee989898.soptlee.detail.viewmodel.DetailViewModel
+import com.lee989898.soptlee.util.binding.BindingActivity
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_detail) {
 
-    private lateinit var binding: ActivityDetailBinding
-    lateinit var detailViewModel: DetailViewModel
+    private val detailViewModel by viewModels<DetailViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
-        detailViewModel = ViewModelProvider(this)[DetailViewModel::class.java]
-        binding.lifecycleOwner = this
+        binding.detailViewModel = detailViewModel
+        updateData()
+    }
 
+    private fun updateData() {
         detailViewModel.updateDetail(
             intent.getStringExtra("name").toString(),
-            intent.getStringExtra("introduction").toString()
+            intent.getStringExtra("image").toString()
         )
-
-        detailViewModel.name.observe(this) {
-            binding.detailNameTv.text = it.toString()
-        }
-
-        detailViewModel.introduce.observe(this) {
-            Glide.with(this)
-                .load(it.toString())
-                .into(binding.detailProfileIv)
-        }
     }
 }

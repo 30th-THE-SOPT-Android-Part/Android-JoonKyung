@@ -22,6 +22,5 @@ fun <ResponseType> Call<ResponseType>.enqueueUtil(
         override fun onFailure(call: Call<ResponseType>, t: Throwable) {
             Log.d("NetworkTest", "error:$t")
         }
-
     })
 }
