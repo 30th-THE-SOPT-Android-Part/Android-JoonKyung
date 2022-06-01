@@ -46,7 +46,6 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
     fun goToSignUp() {
         val intent = Intent(this, SignUpActivity::class.java)
         resultLauncher.launch(intent)
-        finish()
     }
 
     private fun activityResultLauncher(): ActivityResultLauncher<Intent> {
