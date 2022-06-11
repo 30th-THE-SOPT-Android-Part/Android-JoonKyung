@@ -3,7 +3,7 @@ package com.lee989898.soptlee.signin.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.lee989898.soptlee.retrofit.JoinRetrofitInstance
+import com.lee989898.soptlee.retrofit.RetrofitInstance
 import com.lee989898.soptlee.signin.data.RequestSignIn
 import com.lee989898.soptlee.util.Event
 import com.lee989898.soptlee.util.enqueueUtil
@@ -31,11 +31,11 @@ class SignInViewModel : ViewModel() {
 
     private fun loginNetwork() {
         val requestSignIn = RequestSignIn(
-            email.value!!,
-            password.value!!
+            requireNotNull(email.value),
+            requireNotNull(password.value)
         )
 
-        val call = JoinRetrofitInstance.JOIN_SERVICE.postLogin(requestSignIn)
+        val call = RetrofitInstance.AUTH_SERVICE.postLogin(requestSignIn)
 
         call.enqueueUtil(
             onSuccess = {

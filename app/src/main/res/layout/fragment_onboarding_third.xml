@@ -26,12 +26,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/noto_sans_kr_bold"
             android:gravity="center"
-            android:includeFontPadding="false"
             android:text="GitHub를\n시작해본시다!"
             android:textColor="@color/purple_500"
             android:textSize="20sp"
+            android:theme="@style/textViewBold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_github_logo" />
@@ -43,9 +42,9 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/next_round_button"
-            android:fontFamily="@font/noto_sans_kr_bold"
             android:text="시작하기"
             android:textColor="@color/white"
+            android:theme="@style/buttonBold"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

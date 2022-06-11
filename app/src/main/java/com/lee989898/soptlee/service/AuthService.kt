@@ -9,7 +9,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface JoinService {
+interface AuthService {
 
     @POST("auth/signin")
     fun postLogin(

@@ -3,7 +3,7 @@ package com.lee989898.soptlee.signup.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.lee989898.soptlee.retrofit.JoinRetrofitInstance
+import com.lee989898.soptlee.retrofit.RetrofitInstance
 import com.lee989898.soptlee.signup.data.RequestSignUp
 import com.lee989898.soptlee.util.Event
 import com.lee989898.soptlee.util.enqueueUtil
@@ -49,7 +49,7 @@ class SignUpViewModel : ViewModel() {
             password.value!!
         )
 
-        val call = JoinRetrofitInstance.JOIN_SERVICE.postSignUp(requestSignUp)
+        val call = RetrofitInstance.AUTH_SERVICE.postSignUp(requestSignUp)
 
         call.enqueueUtil(
             onSuccess = {

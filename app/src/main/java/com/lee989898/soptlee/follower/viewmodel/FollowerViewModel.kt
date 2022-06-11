@@ -2,18 +2,20 @@ package com.lee989898.soptlee.follower.viewmodel
 
 import androidx.lifecycle.*
 import com.lee989898.soptlee.follower.data.FollowerData
-import com.lee989898.soptlee.retrofit.GitHubRetrofitInstance
+import com.lee989898.soptlee.retrofit.RetrofitInstance
 import com.lee989898.soptlee.service.GitHubService
+import com.lee989898.soptlee.util.Event
 import kotlinx.coroutines.launch
 
 class FollowerViewModel : ViewModel() {
 
-    val followData = MutableLiveData<List<FollowerData>>()
+    private val _followData = MutableLiveData<List<FollowerData>>()
+    val followData: LiveData<List<FollowerData>>
+        get() = _followData
 
     fun getGithubFollower() {
         viewModelScope.launch {
-            val retService =
-                GitHubRetrofitInstance.getRetrofitInstance().create(GitHubService::class.java)
+            val retService = RetrofitInstance.GITHUB_SERVICE
 
             val data = mutableListOf<FollowerData>()
 
@@ -26,7 +28,7 @@ class FollowerViewModel : ViewModel() {
                     )
                 )
             }
-            followData.value = data
+            _followData.value = data
         }
     }
 }

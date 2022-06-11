@@ -19,7 +19,7 @@ class ProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.fragmen
         initTransactionEvent()
     }
 
-    fun goToSetting(){
+    fun goToSetting() {
         startActivity(Intent(activity, SettingActivity::class.java))
     }
 
@@ -48,9 +48,8 @@ class ProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.fragmen
     }
 
     private fun replaceFragment(replaceFragment: Fragment) {
-        val transaction = parentFragmentManager.beginTransaction()
-        transaction.replace(R.id.profile_fragment_fcv, replaceFragment)
-        transaction.commit()
+        parentFragmentManager.beginTransaction().replace(R.id.profile_fragment_fcv, replaceFragment)
+            .commit()
     }
 
 }
