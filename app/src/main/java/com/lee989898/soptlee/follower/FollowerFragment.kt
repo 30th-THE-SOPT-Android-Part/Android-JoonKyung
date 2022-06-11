@@ -16,9 +16,9 @@ class FollowerFragment : BindingFragment<FragmentFollowerBinding>(R.layout.fragm
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        followerViewModel.getGithubFollower()
         initFollowerAdapter()
         observeData()
-        followerViewModel.getGithubFollower()
     }
 
     private fun initFollowerAdapter() {
@@ -59,7 +59,7 @@ class FollowerFragment : BindingFragment<FragmentFollowerBinding>(R.layout.fragm
 
     private fun observeData() {
         followerViewModel.followData.observe(viewLifecycleOwner) {
-            followerAdapter.data = it
+            followerAdapter.followerData = it
         }
     }
 }

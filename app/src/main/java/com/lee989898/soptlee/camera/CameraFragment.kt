@@ -13,7 +13,6 @@ import java.lang.Exception
 
 class CameraFragment : BindingFragment<FragmentCameraBinding>(R.layout.fragment_camera) {
 
-    private val requestCode = 10
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,7 +23,7 @@ class CameraFragment : BindingFragment<FragmentCameraBinding>(R.layout.fragment_
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = MediaStore.Images.Media.CONTENT_TYPE
 
-        startActivityForResult(intent, requestCode)
+        startActivityForResult(intent, REQUEST_CODE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -44,5 +43,9 @@ class CameraFragment : BindingFragment<FragmentCameraBinding>(R.layout.fragment_
 
             }
         }
+    }
+
+    companion object {
+        const val REQUEST_CODE = 10
     }
 }

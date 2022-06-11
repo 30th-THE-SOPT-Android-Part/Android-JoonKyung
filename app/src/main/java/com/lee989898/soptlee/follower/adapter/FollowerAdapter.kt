@@ -11,16 +11,16 @@ import com.lee989898.soptlee.follower.data.FollowerData
 
 class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
 
-    private val _data = mutableListOf<FollowerData>()
-    var data: List<FollowerData> = _data
+    private val _followerData = mutableListOf<FollowerData>()
+    var followerData: List<FollowerData> = _followerData
         set(value) {
-            _data.clear()
-            _data.addAll(value)
+            _followerData.clear()
+            _followerData.addAll(value)
             notifyDataSetChanged()
         }
 
     fun deleteItem(i: Int) {
-        _data.removeAt(i)
+        _followerData.removeAt(i)
         notifyDataSetChanged()
     }
 
@@ -32,30 +32,30 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
 
     override fun onBindViewHolder(holder: FollowerViewHolder, position: Int) {
 
-        holder.bind(_data[position])
+        holder.bind(_followerData[position])
 
-        holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
-            intent.putExtra("name", _data[position].name)
-            intent.putExtra("image", _data[position].image)
-            ContextCompat.startActivity(holder.itemView.context, intent, null)
-        }
+
     }
 
-    override fun getItemCount(): Int = _data.size
+    override fun getItemCount(): Int = _followerData.size
 
     class FollowerViewHolder(
         private val binding: ItemFollowerListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-            itemView.setOnClickListener {
 
-            }
         }
 
-        fun bind(data: FollowerData) {
-            binding.followerRecycler = data
+        fun bind(followerData: FollowerData) {
+            binding.followerRecycler = followerData
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailActivity::class.java)
+                intent.putExtra("name", followerData.name)
+                intent.putExtra("image", followerData.image)
+                ContextCompat.startActivity(itemView.context, intent, null)
+            }
         }
     }
 }
