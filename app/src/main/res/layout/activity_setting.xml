@@ -7,14 +7,14 @@
 
         <variable
             name="settingActivity"
-            type="com.lee989898.soptlee.setting.SettingActivity" />
+            type="com.lee989898.soptlee.ui.setting.SettingActivity" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".setting.SettingActivity">
+        tools:context=".ui.setting.SettingActivity">
 
         <TextView
             android:id="@+id/tv_setting"

@@ -36,6 +36,5 @@ object BindingAdapter {
             .circleCrop()
             .into(imageView)
     }
-
 }
 

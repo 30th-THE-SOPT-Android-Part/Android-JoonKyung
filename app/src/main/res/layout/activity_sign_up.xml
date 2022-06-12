@@ -7,14 +7,14 @@
 
         <variable
             name="signUpViewModel"
-            type="com.lee989898.soptlee.signup.viewmodel.SignUpViewModel" />
+            type="com.lee989898.soptlee.ui.signup.viewmodel.SignUpViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".signup.SignUpActivity">
+        tools:context=".ui.signup.SignUpActivity">
 
         <TextView
             android:id="@+id/sign_up_logo_tv"

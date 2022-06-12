@@ -7,7 +7,7 @@
 
         <variable
             name="profileFragment"
-            type="com.lee989898.soptlee.profile.ProfileFragment" />
+            type="com.lee989898.soptlee.ui.profile.ProfileFragment" />
 
     </data>
 
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            tools:context=".profile.ProfileFragment">
+            tools:context=".ui.profile.ProfileFragment">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/profile_top_cl"
@@ -102,10 +102,9 @@
                     android:id="@+id/profile_follower_list_bt"
                     android:layout_width="160dp"
                     android:layout_height="46dp"
+                    android:layout_marginVertical="13dp"
                     android:layout_marginStart="11dp"
-                    android:layout_marginTop="13dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="13dp"
                     android:background="@drawable/selector_pressed_stroke"
                     android:text="팔로워 목록"
                     android:textColor="@drawable/selector_pressed_text"
@@ -119,10 +118,9 @@
                     android:id="@+id/profile_repository_list_bt"
                     android:layout_width="160dp"
                     android:layout_height="46dp"
+                    android:layout_marginVertical="13dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="13dp"
                     android:layout_marginEnd="11dp"
-                    android:layout_marginBottom="13dp"
                     android:background="@drawable/selector_pressed_stroke"
                     android:text="레포지토리 목록"
                     android:textColor="@drawable/selector_pressed_text"

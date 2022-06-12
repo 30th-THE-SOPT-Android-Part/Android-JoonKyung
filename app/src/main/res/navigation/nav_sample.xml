@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/onBoardingFirstFragment"
-        android:name="com.lee989898.soptlee.OnBoardingFirstFragment"
+        android:name="com.lee989898.soptlee.ui.onboarding.OnBoardingFirstFragment"
         android:label="OnBoardingFirstFragment" >
         <action
             android:id="@+id/action_onBoardingFirstFragment_to_onBoardingSecondFragment"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardingSecondFragment"
-        android:name="com.lee989898.soptlee.OnBoardingSecondFragment"
+        android:name="com.lee989898.soptlee.ui.onboarding.OnBoardingSecondFragment"
         android:label="OnBoardingSecondFragment" >
         <action
             android:id="@+id/action_onBoardingSecondFragment_to_onBoardingThirdFragment"
@@ -22,6 +22,6 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardingThirdFragment"
-        android:name="com.lee989898.soptlee.OnBoardingThirdFragment"
+        android:name="com.lee989898.soptlee.ui.onboarding.OnBoardingThirdFragment"
         android:label="OnBoardingThirdFragment" />
 </navigation>

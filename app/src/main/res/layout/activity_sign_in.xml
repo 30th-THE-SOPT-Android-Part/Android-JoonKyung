@@ -7,18 +7,18 @@
 
         <variable
             name="signInViewModel"
-            type="com.lee989898.soptlee.signin.viewmodel.SignInViewModel" />
+            type="com.lee989898.soptlee.ui.signin.viewmodel.SignInViewModel" />
 
         <variable
             name="signInActivity"
-            type="com.lee989898.soptlee.signin.SignInActivity" />
+            type="com.lee989898.soptlee.ui.signin.SignInActivity" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".signin.SignInActivity">
+        tools:context=".ui.signin.SignInActivity">
 
         <ImageView
             android:id="@+id/sign_in_logo_iv"

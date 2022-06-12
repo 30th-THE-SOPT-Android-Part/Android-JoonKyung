@@ -7,7 +7,7 @@
 
         <variable
             name="repositoryRecycler"
-            type="com.lee989898.soptlee.repository.adapter.RepositoryData" />
+            type="com.lee989898.soptlee.ui.repository.adapter.RepositoryData" />
 
     </data>
 
