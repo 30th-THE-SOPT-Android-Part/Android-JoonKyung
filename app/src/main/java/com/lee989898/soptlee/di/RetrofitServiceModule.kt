@@ -17,11 +17,17 @@ object RetrofitServiceModule {
 
     @Provides
     @Singleton
-    fun provideAuthService(@Named("Normal") retrofit: Retrofit): AuthService =
+    fun provideAuthService(
+        @Named("Auth")
+        retrofit: Retrofit
+    ): AuthService =
         retrofit.create(AuthService::class.java)
 
     @Provides
     @Singleton
-    fun provideGithubService(@Named("Email") retrofit: Retrofit): GithubService =
+    fun provideGithubService(
+        @Named("Github")
+        retrofit: Retrofit
+    ): GithubService =
         retrofit.create(GithubService::class.java)
 }

@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.add
+import androidx.fragment.app.replace
 import com.lee989898.soptlee.R
 import com.lee989898.soptlee.databinding.FragmentProfileBinding
 import com.lee989898.soptlee.ui.follower.FollowerFragment
@@ -24,21 +27,22 @@ class ProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.fragmen
     }
 
     private fun initTransactionEvent() {
-        val followerFragment = FollowerFragment()
-        val repositoryFragment = RepositoryFragment()
-
         buttonSelected(true)
 
-        parentFragmentManager.beginTransaction().add(R.id.profile_fragment_fcv, followerFragment)
+        parentFragmentManager.beginTransaction().add<FollowerFragment>(R.id.profile_fragment_fcv)
             .commit()
 
         binding.profileFollowerListBt.setOnClickListener {
             buttonSelected(true)
-            replaceFragment(followerFragment)
+            parentFragmentManager.beginTransaction()
+                .replace<FollowerFragment>(R.id.profile_fragment_fcv)
+                .commit()
         }
         binding.profileRepositoryListBt.setOnClickListener {
             buttonSelected(false)
-            replaceFragment(repositoryFragment)
+            parentFragmentManager.beginTransaction()
+                .replace<RepositoryFragment>(R.id.profile_fragment_fcv)
+                .commit()
         }
     }
 
@@ -46,10 +50,4 @@ class ProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.fragmen
         binding.profileFollowerListBt.isSelected = select
         binding.profileRepositoryListBt.isSelected = !select
     }
-
-    private fun replaceFragment(replaceFragment: Fragment) {
-        parentFragmentManager.beginTransaction().replace(R.id.profile_fragment_fcv, replaceFragment)
-            .commit()
-    }
-
 }

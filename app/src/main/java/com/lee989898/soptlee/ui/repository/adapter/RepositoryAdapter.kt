@@ -2,18 +2,13 @@ package com.lee989898.soptlee.ui.repository.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.lee989898.soptlee.databinding.ItemRepositoryListBinding
 
-class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.FollowerViewHolder>() {
-
-    private val _data = mutableListOf<RepositoryData>()
-    var data: List<RepositoryData> = _data
-        set(value) {
-            _data.clear()
-            _data.addAll(value)
-            notifyDataSetChanged()
-        }
+class RepositoryAdapter :
+    ListAdapter<RepositoryData, RepositoryAdapter.FollowerViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerViewHolder {
         val binding =
@@ -22,17 +17,32 @@ class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.FollowerViewHol
     }
 
     override fun onBindViewHolder(holder: FollowerViewHolder, position: Int) {
-        holder.bind(_data[position])
+        holder.bind(getItem(position))
     }
-
-    override fun getItemCount(): Int = _data.size
 
     class FollowerViewHolder(
         private val binding: ItemRepositoryListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-
         fun bind(data: RepositoryData) {
             binding.repositoryRecycler = data
+        }
+    }
+
+    companion object {
+        val diffUtil = object : DiffUtil.ItemCallback<RepositoryData>() {
+            override fun areItemsTheSame(
+                oldItem: RepositoryData,
+                newItem: RepositoryData
+            ): Boolean {
+                return oldItem.title == newItem.title
+            }
+
+            override fun areContentsTheSame(
+                oldItem: RepositoryData,
+                newItem: RepositoryData
+            ): Boolean {
+                return oldItem == newItem
+            }
         }
     }
 }

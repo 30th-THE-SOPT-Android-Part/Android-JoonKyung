@@ -45,7 +45,7 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    @Named("Normal")
+    @Named("Auth")
     fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .baseUrl("http://13.124.62.236/")
@@ -55,7 +55,7 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    @Named("Email")
+    @Named("Github")
     fun providesGitHubRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .baseUrl("http://api.github.com/")

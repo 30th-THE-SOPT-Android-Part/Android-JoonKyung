@@ -4,48 +4,29 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.lee989898.soptlee.databinding.ItemFollowerListBinding
 import com.lee989898.soptlee.ui.detail.DetailActivity
 import com.lee989898.soptlee.ui.follower.data.FollowerData
+import com.lee989898.soptlee.ui.repository.adapter.RepositoryData
 
-class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
+class FollowerAdapter : ListAdapter<FollowerData, FollowerAdapter.ViewHolder>(diffUtil) {
 
-    private val _followerData = mutableListOf<FollowerData>()
-    var followerData: List<FollowerData> = _followerData
-        set(value) {
-            _followerData.clear()
-            _followerData.addAll(value)
-            notifyDataSetChanged()
-        }
-
-    fun deleteItem(i: Int) {
-        _followerData.removeAt(i)
-        notifyDataSetChanged()
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             ItemFollowerListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return FollowerViewHolder(binding)
+        return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: FollowerViewHolder, position: Int) {
-
-        holder.bind(_followerData[position])
-
-
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount(): Int = _followerData.size
-
-    class FollowerViewHolder(
+    class ViewHolder(
         private val binding: ItemFollowerListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-
-        init {
-
-        }
 
         fun bind(followerData: FollowerData) {
             binding.followerRecycler = followerData
@@ -55,6 +36,24 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
                 intent.putExtra("name", followerData.name)
                 intent.putExtra("image", followerData.image)
                 ContextCompat.startActivity(itemView.context, intent, null)
+            }
+        }
+    }
+
+    companion object {
+        val diffUtil = object : DiffUtil.ItemCallback<FollowerData>() {
+            override fun areItemsTheSame(
+                oldItem: FollowerData,
+                newItem: FollowerData
+            ): Boolean {
+                return oldItem.name == newItem.name
+            }
+
+            override fun areContentsTheSame(
+                oldItem: FollowerData,
+                newItem: FollowerData
+            ): Boolean {
+                return oldItem == newItem
             }
         }
     }

@@ -61,7 +61,7 @@ class FollowerFragment : BindingFragment<FragmentFollowerBinding>(R.layout.fragm
 
     private fun observeData() {
         followerViewModel.followData.observe(viewLifecycleOwner) {
-            followerAdapter.followerData = it
+            followerAdapter.submitList(it)
         }
     }
 }

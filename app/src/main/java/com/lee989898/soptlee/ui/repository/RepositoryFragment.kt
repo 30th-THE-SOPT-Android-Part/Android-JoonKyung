@@ -24,7 +24,7 @@ class RepositoryFragment :
 
     private fun observeRepositoryData() {
         repositoryViewModel.repositoryData.observe(viewLifecycleOwner) {
-            repositoryAdapter.data = it
+            repositoryAdapter.submitList(it)
         }
     }
 
