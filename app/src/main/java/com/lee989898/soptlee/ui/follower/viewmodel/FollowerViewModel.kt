@@ -1,9 +1,7 @@
 package com.lee989898.soptlee.ui.follower.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.*
-import com.lee989898.soptlee.ui.follower.data.FollowerData
-import com.lee989898.soptlee.data.RetrofitInstance
+import com.lee989898.soptlee.ui.follower.adapter.FollowerData
 import com.lee989898.soptlee.domain.repository.GithubRepository
 import com.lee989898.soptlee.util.Event
 import dagger.hilt.android.lifecycle.HiltViewModel

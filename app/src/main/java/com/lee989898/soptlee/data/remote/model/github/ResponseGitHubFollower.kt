@@ -1,6 +1,6 @@
-package com.lee989898.soptlee.ui.follower.data
+package com.lee989898.soptlee.data.remote.model.github
 
-data class ResponseGitHubFollowerItem(
+data class ResponseGitHubFollower(
     val avatar_url: String,
     val events_url: String,
     val followers_url: String,

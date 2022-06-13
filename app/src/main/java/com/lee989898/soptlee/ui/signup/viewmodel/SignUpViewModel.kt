@@ -1,18 +1,14 @@
 package com.lee989898.soptlee.ui.signup.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.lee989898.soptlee.data.RetrofitInstance
 import com.lee989898.soptlee.domain.repository.AuthRepository
-import com.lee989898.soptlee.ui.signup.data.RequestSignUp
+import com.lee989898.soptlee.data.remote.model.auth.signup.RequestSignUp
 import com.lee989898.soptlee.util.Event
-import com.lee989898.soptlee.util.enqueueUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 enum class NoticeType {

@@ -1,4 +1,4 @@
-package com.lee989898.soptlee.ui.home
+package com.lee989898.soptlee.ui.home.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

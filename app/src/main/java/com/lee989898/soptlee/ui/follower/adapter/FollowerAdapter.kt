@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.lee989898.soptlee.databinding.ItemFollowerListBinding
-import com.lee989898.soptlee.ui.detail.DetailActivity
-import com.lee989898.soptlee.ui.follower.data.FollowerData
-import com.lee989898.soptlee.ui.repository.adapter.RepositoryData
+import com.lee989898.soptlee.ui.detail.FollowerDetailActivity
 
 class FollowerAdapter : ListAdapter<FollowerData, FollowerAdapter.ViewHolder>(diffUtil) {
 
@@ -32,7 +30,7 @@ class FollowerAdapter : ListAdapter<FollowerData, FollowerAdapter.ViewHolder>(di
             binding.followerRecycler = followerData
 
             itemView.setOnClickListener {
-                val intent = Intent(itemView.context, DetailActivity::class.java)
+                val intent = Intent(itemView.context, FollowerDetailActivity::class.java)
                 intent.putExtra("name", followerData.name)
                 intent.putExtra("image", followerData.image)
                 ContextCompat.startActivity(itemView.context, intent, null)

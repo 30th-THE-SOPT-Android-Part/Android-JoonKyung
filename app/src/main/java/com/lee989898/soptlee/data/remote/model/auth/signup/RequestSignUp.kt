@@ -1,4 +1,4 @@
-package com.lee989898.soptlee.ui.signup.data
+package com.lee989898.soptlee.data.remote.model.auth.signup
 
 import com.google.gson.annotations.SerializedName
 

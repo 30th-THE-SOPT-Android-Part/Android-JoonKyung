@@ -1,4 +1,4 @@
-package com.lee989898.soptlee.ui.main
+package com.lee989898.soptlee.ui.main.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

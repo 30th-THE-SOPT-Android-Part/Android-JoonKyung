@@ -27,7 +27,7 @@
             android:name="com.lee989898.soptlee.ui.setting.SettingActivity"
             android:exported="false" />
         <activity
-            android:name="com.lee989898.soptlee.ui.detail.DetailActivity"
+            android:name="com.lee989898.soptlee.ui.detail.FollowerDetailActivity"
             android:exported="false" />
         <activity
             android:name="com.lee989898.soptlee.ui.signup.SignUpActivity"

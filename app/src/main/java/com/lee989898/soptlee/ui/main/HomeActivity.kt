@@ -6,6 +6,7 @@ import com.lee989898.soptlee.ui.camera.CameraFragment
 import com.lee989898.soptlee.*
 import com.lee989898.soptlee.databinding.ActivityHomeBinding
 import com.lee989898.soptlee.ui.home.HomeFragment
+import com.lee989898.soptlee.ui.main.adapter.HomeViewPagerAdapter
 import com.lee989898.soptlee.ui.profile.ProfileFragment
 import com.lee989898.soptlee.util.binding.BindingActivity
 import dagger.hilt.android.AndroidEntryPoint

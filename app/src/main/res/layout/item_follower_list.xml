@@ -7,7 +7,7 @@
 
         <variable
             name="followerRecycler"
-            type="com.lee989898.soptlee.ui.follower.data.FollowerData" />
+            type="com.lee989898.soptlee.ui.follower.adapter.FollowerData" />
 
     </data>
 

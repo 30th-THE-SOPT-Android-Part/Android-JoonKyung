@@ -1,4 +1,4 @@
-package com.lee989898.soptlee.ui.signin.data
+package com.lee989898.soptlee.data.remote.model.auth.signin
 
 data class ResponseSignIn(
     val name: String,
