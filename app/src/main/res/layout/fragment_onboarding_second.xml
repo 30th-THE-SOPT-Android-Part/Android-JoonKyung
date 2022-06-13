@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="220dp"
             android:gravity="center"
-            android:text="GitHub에서 즐거운 시간\n보내시길 바랍니다"
+            android:text="@string/onBoarding_tv_explainSecond"
             android:textColor="@color/purple_500"
             android:textSize="20sp"
             android:theme="@style/textViewBold"
@@ -32,7 +32,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/next_round_button"
-            android:text="다음으로"
+            android:text="@string/onBoarding_bt_nextSecond"
             android:textColor="@color/white"
             android:theme="@style/buttonBold"
             app:layout_constraintBottom_toBottomOf="parent" />

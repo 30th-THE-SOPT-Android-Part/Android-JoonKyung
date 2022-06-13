@@ -20,14 +20,15 @@
             android:src="@drawable/profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="GitHub를\n시작해본시다!"
+            android:text="@string/onBoarding_tv_explainThird"
             android:textColor="@color/purple_500"
             android:textSize="20sp"
             android:theme="@style/textViewBold"
@@ -42,7 +43,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/next_round_button"
-            android:text="시작하기"
+            android:text="@string/onBoarding_bt_nextThird"
             android:textColor="@color/white"
             android:theme="@style/buttonBold"
             app:layout_constraintBottom_toBottomOf="parent" />
