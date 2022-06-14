@@ -12,15 +12,17 @@
         android:layout_height="match_parent"
         tools:context=".ui.onboarding.OnBoardingThirdFragment">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_github_logo"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="100dp"
+            android:scaleType="fitXY"
             android:src="@drawable/profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/circle"
             tools:ignore="ContentDescription" />
 
         <TextView
