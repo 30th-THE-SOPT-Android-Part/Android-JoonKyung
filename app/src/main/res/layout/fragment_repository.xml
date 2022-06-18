@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".repository.RepositoryFragment">
+        tools:context=".ui.repository.RepositoryFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/repository_list_rv"

@@ -7,14 +7,14 @@
 
         <variable
             name="detailViewModel"
-            type="com.lee989898.soptlee.detail.viewmodel.DetailViewModel" />
+            type="com.lee989898.soptlee.ui.detail.viewmodel.FollowerDetailViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".detail.DetailActivity">
+        tools:context=".ui.detail.FollowerDetailActivity">
 
         <ImageView
             android:id="@+id/detail_profile_iv"

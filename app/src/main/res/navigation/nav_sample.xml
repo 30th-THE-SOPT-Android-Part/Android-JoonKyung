@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_sample"
+    app:startDestination="@id/onBoardingFirstFragment">
+
+    <fragment
+        android:id="@+id/onBoardingFirstFragment"
+        android:name="com.lee989898.soptlee.ui.onboarding.OnBoardingFirstFragment"
+        android:label="OnBoardingFirstFragment" >
+        <action
+            android:id="@+id/action_onBoardingFirstFragment_to_onBoardingSecondFragment"
+            app:destination="@id/onBoardingSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingSecondFragment"
+        android:name="com.lee989898.soptlee.ui.onboarding.OnBoardingSecondFragment"
+        android:label="OnBoardingSecondFragment" >
+        <action
+            android:id="@+id/action_onBoardingSecondFragment_to_onBoardingThirdFragment"
+            app:destination="@id/onBoardingThirdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingThirdFragment"
+        android:name="com.lee989898.soptlee.ui.onboarding.OnBoardingThirdFragment"
+        android:label="OnBoardingThirdFragment" />
+</navigation>

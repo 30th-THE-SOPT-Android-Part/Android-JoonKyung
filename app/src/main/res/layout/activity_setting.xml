@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="settingActivity"
+            type="com.lee989898.soptlee.ui.setting.SettingActivity" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.setting.SettingActivity">
+
+        <TextView
+            android:id="@+id/tv_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/setting_tv_settingTitle"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:theme="@style/textViewBold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/vi_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_setting" />
+
+        <TextView
+            android:id="@+id/tv_auto_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:onClick="@{()->settingActivity.autoLoginClear()}"
+            android:text="@string/setting_tv_autoLogin"
+            android:textSize="16sp"
+            android:theme="@style/textViewRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vi_line" />
+
+        <View
+            android:id="@+id/vi_auto_login_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray_1"
+            app:layout_constraintTop_toBottomOf="@id/tv_auto_login" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

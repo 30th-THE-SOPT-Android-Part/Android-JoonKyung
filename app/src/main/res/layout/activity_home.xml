@@ -24,12 +24,9 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             app:itemIconTint="@color/home_bottom_navi"
-            app:itemRippleColor="#6424D5"
+            app:itemRippleColor="@color/purple_500"
             app:itemTextColor="@color/home_bottom_navi"
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/home_menu" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

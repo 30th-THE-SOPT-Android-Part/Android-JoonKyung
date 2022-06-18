@@ -6,14 +6,14 @@
 
         <variable
             name="cameraFragment"
-            type="com.lee989898.soptlee.camera.CameraFragment" />
+            type="com.lee989898.soptlee.ui.camera.CameraFragment" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".camera.CameraFragment">
+        tools:context=".ui.camera.CameraFragment">
 
         <ImageView
             android:id="@+id/camera_img_iv"
@@ -22,16 +22,17 @@
             android:layout_marginTop="80dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/camera_explain_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/noto_sans_kr_bold"
-            android:text="사진을 첨부해주세요"
+            android:text="@string/camera_tv_explain"
             android:textSize="16sp"
+            android:theme="@style/textViewBold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/camera_img_iv" />
@@ -43,10 +44,9 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
             android:background="@color/sopt_main_purple"
-            android:fontFamily="@font/noto_sans_kr_bold"
-            android:text="첨부하기"
-            android:onClick="@{()->cameraFragment.gallerySelect()}"
+            android:text="@string/camera_bt_submit"
             android:textColor="@color/white"
+            android:theme="@style/buttonBold"
             app:layout_constraintTop_toBottomOf="@id/camera_explain_tv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

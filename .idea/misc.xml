@@ -7,13 +7,18 @@
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable-v24/selector_edit_text.xml" value="0.28229166666666666" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable-v24/selector_pressed.xml" value="0.26296296296296295" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable-v24/selector_pressed_stroke.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable-v24/selector_pressed_text.xml" value="0.163" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/button_click.xml" value="0.14583333333333334" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/follower_round_button.xml" value="0.26564102564102565" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.26564102564102565" />
+        <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/ic_baseline_check_circle_outline_24.xml" value="0.1245" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/ic_camera.xml" value="0.26564102564102565" />
+        <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/ic_checkbox_off.xml" value="0.1465" />
+        <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/ic_checkbox_on.xml" value="0.1465" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/ic_home.xml" value="0.26564102564102565" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/ic_person.xml" value="0.26564102564102565" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/item_round.xml" value="0.26564102564102565" />
+        <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/next_round_button.xml" value="0.1465" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/profile_button_center.xml" value="0.26296296296296295" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/profile_clicked.xml" value="0.26296296296296295" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/profile_round_button.xml" value="0.26296296296296295" />
@@ -23,12 +28,15 @@
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/repogitory_round_button.xml" value="0.26564102564102565" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/repository_round_button.xml" value="0.26564102564102565" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/round_button.xml" value="0.26564102564102565" />
+        <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/selector_auto_login.xml" value="0.1465" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/drawable/selector_pressed.xml" value="0.14583333333333334" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/font/noto_sans_kr.xml" value="0.2794871794871795" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/activity_detail.xml" value="0.264" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/activity_main.xml" value="0.1296875" />
+        <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/activity_onboarding.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/activity_sample.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/activity_setting.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/fragment_camera.xml" value="0.21557971014492755" />
@@ -36,6 +44,9 @@
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/fragment_home.xml" value="0.21557971014492755" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/fragment_home_follower.xml" value="0.19655797101449277" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/fragment_home_following.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/fragment_onboarding_first.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/fragment_onboarding_second.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/fragment_onboarding_third.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/fragment_repository.xml" value="0.2318840579710145" />
         <entry key="..\:/Users/joon_/Desktop/Android-JoonKyung/app/src/main/res/layout/fragment_sample.xml" value="0.2318840579710145" />
